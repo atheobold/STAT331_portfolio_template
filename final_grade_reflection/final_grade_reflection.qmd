@@ -1,0 +1,11 @@
+---
+title: "Final Grade Reflection"
+author: "Your Name Goes Here"
+format: pdf
+editor: visual
+---
+
+In this document, you make a data-based argument for the grade you've earned in this course. Your argument should include evidence from the supporting artifacts you've provided. 
+
+The output document should be a PDF or a Word Document, as it should be a **maximum** of 2-pages. 
+---

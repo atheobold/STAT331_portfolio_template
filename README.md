@@ -16,4 +16,3 @@
 
 ### Growth as a Team Member
 
-This is a line from RStudio

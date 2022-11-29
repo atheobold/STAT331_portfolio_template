@@ -14,8 +14,6 @@ See instructions for creating your final portfolio [here](https://docs.google.co
 
 ### Demonstration of Continued Learning
 
-#### Revising My Thinking
+### Demonstration of Revising My Thinking
 
-#### Extending My Thinking
-
-### Growth as a Team Member
+### Demonstration of Peer Support

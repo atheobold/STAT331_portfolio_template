@@ -21,7 +21,7 @@ LAB 4
 
 -   include final summary revision
 
-## Learning Target (11/23), with possible 4 on the way
+## Learning Target (11/23), with possible 4 on the way, 2 off the table
 
 -   **WD-1:** I can import data from a variety of formats (e.g., csv, xlsx, txt, etc.).
 
@@ -37,7 +37,7 @@ LAB 4
 
 -   **WD-4: I can modify existing variables and create new variables in a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).**
 
-    -   Lab
+    -   Challenge 3 #1, Lab 7 Part One Task 2, Task 5, Lab 9 #3
 
 -   **WD-5: I can use mutating joins to combine multiple dataframes.**
 
@@ -55,13 +55,15 @@ LAB 4
 
 -   **R-1:** I can create a professional looking, reproducible analysis using RStudio projects, Quarto documents, and the here package.
 
+    -   Lab 9
+
 -   **R-2:** I can write well documented and tidy code.
 
-    -   lab
+    -   Lab 7, \#
 
 -   **R-3:** I can write robust programs that are resistant to changes in inputs.
 
-    -   lab
+    -   Lab
 
 -   **DVS-1:** I can create visualizations for a variety of variable types**.**
 
@@ -85,7 +87,7 @@ LAB 4
 
 -   **DVS-6:** I can create tables which make my summaries clear to the reader.
 
-    -   lab
+    -   Lab
 
 -   **DVS-7:** I show creativity in my tables.
 
@@ -93,19 +95,19 @@ LAB 4
 
 -   **PE-1:** I can write concise code which does not repeat itself.
 
-    -   lab, iteration function
+    -   Lab, iteration function
 
 -   **PE-2:** I can write functions to reduce repetition in my code.
 
-    -   lab, functions
+    -   Lab, functions
 
 -   **PE-3:**I can use iteration to reduce repetition in my code
 
-    -   lab,
+    -   Lab,
 
 -   **PE-4: I can use modern tools when carrying out my analysis.**
 
-    -   lab
+    -   Lab
 
 -   **DSM-1:** I can simulate data from a variety of probability models.
 

@@ -71,11 +71,11 @@ LAB 4
 
 -   **DVS-2:** I use plot modifications to make my visualization clear to the reader.
 
-    -   Lab 9 - Section 5, #1
+    -   Lab 9 - Section 5: #1
 
 -   **DVS-3:** I show creativity in my visualizations
 
-    -   Lab 9 - Section 5, #1
+    -   Lab 9 - Section 5: #1
 
 -   **DVS-4:** I can calculate numerical summaries of variables.
 
@@ -83,15 +83,15 @@ LAB 4
 
 -   **DVS-5:** I can find summaries of variables across multiple groups.
 
-    -   Challenge 3, #2
+    -   Challenge 3: #2
 
 -   **DVS-6:** I can create tables which make my summaries clear to the reader.
 
-    -   Lab
+    -   Challenge 9 Section 3: #1/2
 
 -   **DVS-7:** I show creativity in my tables.
 
-    -   lab 9 Section 5 #1
+    -   lab 9 Section 5: #1
 
 -   **PE-1:** I can write concise code which does not repeat itself.
 
@@ -111,11 +111,11 @@ LAB 4
 
 -   **DSM-1:** I can simulate data from a variety of probability models.
 
-    -   Practice Activity 9, #3
+    -   Practice Activity 9: #3
 
 -   **DSM-2:** I can fit a linear regression and extract necessary summary measures.
 
-    -   Lab 9, \#
+    -   Lab 9, Section 4: #5, #6
 
 ## **Collaborative Group Member**
 

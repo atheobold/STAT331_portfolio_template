@@ -8,7 +8,7 @@
 
 <meta name="author" content="Jake McDonald">
 
-<title>Challenge 3</title>
+<title>Lab 4</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -2598,7 +2598,7 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Challenge 3</h1>
+<h1 class="title">Lab 4</h1>
 </div>
 
 
@@ -2618,51 +2618,211 @@ vertical-align: -.125em;
 
 </header>
 
-<p>#1</p>
+<section id="introduction-and-set-up" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-and-set-up">Introduction and Set-Up</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hiphop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;supporting_artifacts&quot;</span>, <span class="st">&quot;learning_targets&quot;</span>, <span class="st">&quot;hiphop.csv&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>avocado <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in file(con, &quot;rb&quot;): cannot open the connection</code></pre>
 </div>
+</div>
+</section>
+<section id="avocado-data-set-description" class="level2">
+<h2 class="anchored" data-anchor-id="avocado-data-set-description">Avocado Data-set Description</h2>
+<p>#1</p>
+<p>Each observation in the data set represents a weekly retail scan data for National retail volume (units) and price of avocados. The data comes from retailers’ cash registers based on actual retail sales of Hass avocados. The total volume is an aggregation of the following channels: grocery, mass, club, drug, dollar and military. The Average Price (of avocados) in the table reflects a per unit (per avocado) cost, even when multiple units (avocados) are sold in bags. The Product Lookup codes (PLU’s) in the table are only for Hass avocados.</p>
+<ul>
+<li><p><code>Date</code> - The date of the observation</p></li>
+<li><p><code>AveragePrice</code> - the average price of a single avocado</p></li>
+<li><p><code>type</code> - conventional or organic</p></li>
+<li><p><code>year</code> - the year</p></li>
+<li><p><code>Region</code> - the city or region of the observation</p></li>
+<li><p><code>Total Volume</code> - Total number of avocados sold</p></li>
+<li><p><code>4046</code> - Total number of small Hass avocados</p></li>
+<li><p><code>4225</code> - Total number of large Hass avocados with PLU 4225 sold</p></li>
+<li><p><code>4770</code> - Total number of extra-large Hass avocados with PLU 4770 sold</p></li>
+</ul>
+</section>
+<section id="data-clean-up" class="level2">
+<h2 class="anchored" data-anchor-id="data-clean-up">Data Clean-up</h2>
 <p>#2</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>hiphop2 <span class="ot">&lt;-</span> hiphop <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnic_cat =</span> <span class="fu">if_else</span>(ethnic <span class="sc">==</span> <span class="st">&quot;white&quot;</span>, <span class="st">&quot;white&quot;</span>, <span class="st">&quot;non-white&quot;</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(subj, sex, intl<span class="sc">:</span>hiphop, ethnic_cat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>avocado <span class="ot">&lt;-</span> avocado <span class="sc">|&gt;</span> </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;XLavocado&quot;</span> <span class="ot">=</span> <span class="st">`</span><span class="at">4770</span><span class="st">`</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Lavocado&quot;</span> <span class="ot">=</span> <span class="st">`</span><span class="at">4225</span><span class="st">`</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;Savocado&quot;</span> <span class="ot">=</span> <span class="st">`</span><span class="at">4046</span><span class="st">`</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">&quot;TotalVolume&quot;</span> <span class="ot">=</span> <span class="st">`</span><span class="at">Total Volume</span><span class="st">`</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in rename(avocado, XLavocado = `4770`, Lavocado = `4225`, Savocado = `4046`, : object &#39;avocado&#39; not found</code></pre>
 </div>
-<p>#3</p>
+</div>
+<p>Create a data frame for the regions/states/total US in the data set:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hiphop2 <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span> </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(intl<span class="sc">:</span>hiphop, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(intl<span class="sc">:</span>hiphop, diff, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 9
-    intl vocal classical     folk  rock country    pop alternative  hiphop
-   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;
-1 -0.190 0.688     0.189 -0.00955  1.13  -0.394 -0.201     -0.0568 -0.0945</code></pre>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>region <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;GreatLakes&quot;</span>, <span class="st">&quot;Northeast&quot;</span>, <span class="st">&quot;Midsouth&quot;</span>, <span class="st">&quot;Plains&quot;</span>, <span class="st">&quot;Southeast&quot;</span>, <span class="st">&quot;SouthCentral&quot;</span>, <span class="st">&quot;West&quot;</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>state <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;California&quot;</span>, <span class="st">&quot;SouthCarolina&quot;</span>, <span class="st">&quot;WestTexNewMexico&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>The largest difference in the average number of artists participants reported liking for males versus females was the rock genre.</p>
-<p>#4</p>
+<p>Semi-join region data set to main data set to filter out those regions/states:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hiphop2 <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ethnic_cat) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(intl<span class="sc">:</span>hiphop, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(intl<span class="sc">:</span>hiphop, diff, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 9
-   intl vocal classical  folk  rock country     pop alternative hiphop
-  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 -1.59 0.526   -0.0485 0.270  1.51   0.490 -0.0431        1.19 -0.730</code></pre>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>avocado_majorregion <span class="ot">&lt;-</span> avocado <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(region, <span class="at">by =</span> <span class="fu">c</span>(<span class="at">region =</span> <span class="st">&quot;region&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in semi_join(avocado, region, by = c(region = &quot;region&quot;)): object &#39;avocado&#39; not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>avocado_metro <span class="ot">&lt;-</span> avocado <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(state, <span class="at">by =</span> <span class="st">&quot;region&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(region, <span class="at">by =</span> <span class="st">&quot;region&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(region <span class="sc">!=</span> <span class="st">&quot;TotalUS&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in anti_join(avocado, state, by = &quot;region&quot;): object &#39;avocado&#39; not found</code></pre>
 </div>
 </div>
-<p>The largest difference in the average number of artists participants reported liking in each genre was for whites vs. non-whites was also the international music genre.</p>
-<p>Study Design Critique</p>
-<ol type="1">
-<li><p>The sample is has a much larger proportion of white people than people of color, which would not give an accurate representation of the greater population.</p></li>
-<li><p>Additionally, I believe that some of the pop-culture/AAE language references could be deemed offensive, as they display generalizations on how African Americans speak</p></li>
-</ol>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">3 Exercises</h2>
+<p>#3 What region sold the most organic, small Hass avocados in 2017?</p>
+<p>Separate Date by Year, Month, Day</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>avocado_majorregion <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> Date, <span class="at">sep=</span><span class="st">&quot;-&quot;</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2017</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>         type <span class="sc">==</span> <span class="st">&#39;organic&#39;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_volume_small =</span> <span class="fu">sum</span>(Savocado)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(mean_volume_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in separate(avocado_majorregion, col = Date, sep = &quot;-&quot;, into = c(&quot;year&quot;, : object &#39;avocado_majorregion&#39; not found</code></pre>
+</div>
+</div>
+<p>On average, the region that sold the most organic, small Hass avocados in 2017 was the West.</p>
+<p>#4 In which month is the highest volume of avocado sales?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>avocado <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(<span class="at">col =</span> Date, <span class="at">sep=</span><span class="st">&quot;-&quot;</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;year&quot;</span>, <span class="st">&quot;month&quot;</span>, <span class="st">&quot;day&quot;</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(month) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_mean_volume =</span> <span class="fu">mean</span>(TotalVolume)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(total_mean_volume)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in separate(avocado, col = Date, sep = &quot;-&quot;, into = c(&quot;year&quot;, &quot;month&quot;, : object &#39;avocado&#39; not found</code></pre>
+</div>
+</div>
+<p>Out of all cities, regions, and states, the month that had the highest total volume sold was February.</p>
+<p>#5 Which metro area regions sold the most total avocados?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>avocado_metro_volume <span class="ot">&lt;-</span> avocado_metro <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_volume =</span> <span class="fu">mean</span>(TotalVolume)) <span class="sc">|&gt;</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_volume))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in group_by(avocado_metro, region): object &#39;avocado_metro&#39; not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>larg_metro <span class="ot">&lt;-</span> <span class="fu">top_n</span>(avocado_metro_volume, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in tbl_vars_dispatch(x): object &#39;avocado_metro_volume&#39; not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>larg_metro</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object &#39;larg_metro&#39; not found</code></pre>
+</div>
+</div>
+<p>The metro area regions that had the highest average total volume of avocado sold was LosAngeles, NewYork, DallasFtWorth, Houston, and PhoenixTucson.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>metro <span class="ot">&lt;-</span> avocado <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(larg_metro, <span class="at">by =</span> <span class="fu">c</span>(<span class="at">region =</span> <span class="st">&quot;region&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in semi_join(avocado, larg_metro, by = c(region = &quot;region&quot;)): object &#39;avocado&#39; not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> metro, </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">group_by</span>(region),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> TotalVolume,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> region)) <span class="sc">+</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in ggplot(data = metro, mapping = aes(group_by(region), x = TotalVolume, : object &#39;metro&#39; not found</code></pre>
+</div>
+</div>
+</section>
+<section id="reshaping" class="level2">
+<h2 class="anchored" data-anchor-id="reshaping">4 Reshaping</h2>
+<p>#6 In which regions is the price of organic versus conventional avocados most different? Support your answer with a few summary statistics and a visualization.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ca_metro <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">region =</span> <span class="fu">c</span>(<span class="st">&quot;LosAngeles&quot;</span>, <span class="st">&quot;SanDiego&quot;</span>, <span class="st">&quot;Sacramento&quot;</span>, <span class="st">&quot;SanFrancisco&quot;</span>))</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ca_metro <span class="ot">&lt;-</span> avocado <span class="sc">|&gt;</span> </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">semi_join</span>(ca_metro, <span class="at">by =</span> <span class="st">&quot;region&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in semi_join(avocado, ca_metro, by = &quot;region&quot;): object &#39;avocado&#39; not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ca_metro_clean <span class="ot">&lt;-</span> ca_metro <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, type) <span class="sc">|&gt;</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(AveragePrice), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> region, <span class="at">values_from =</span> mean_price) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `group_by()`:
+! Must group by variables found in `.data`.
+✖ Column `type` is not found.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>ca_metro_clean <span class="ot">&lt;-</span> ca_metro_clean <span class="sc">|&gt;</span> </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="at">.cols =</span> <span class="st">&quot;LosAngeles&quot;</span><span class="sc">:</span><span class="st">&quot;SanFrancisco&quot;</span>, diff))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in summarize(ca_metro_clean, across(.cols = &quot;LosAngeles&quot;:&quot;SanFrancisco&quot;, : object &#39;ca_metro_clean&#39; not found</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>ca_metro_clean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in eval(expr, envir, enclos): object &#39;ca_metro_clean&#39; not found</code></pre>
+</div>
+</div>
+<p>The California region with the highest difference in prices between organic and conventional is San Francisco.</p>
+<p>Bar graph of conventional vs. organic mean prices:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ca_metro <span class="sc">|&gt;</span> </span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> region,</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> AveragePrice)) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Region&quot;</span>,</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Difference in Average Price of Conventional vs. Organic Avocados&quot;</span>,</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Price ($)&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in FUN(X[[i]], ...): object &#39;AveragePrice&#39; not found</code></pre>
+</div>
+</div>
+<p>#7</p>
+<p>Data wrangling to create proportions of organic and conventional avocados sold:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>ca_prop <span class="ot">&lt;-</span> ca_metro <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="st">&quot;Savocado&quot;</span><span class="sc">:</span><span class="st">&quot;XLavocado&quot;</span>, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;AvocadoSize&quot;</span>,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;sales&quot;</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(region, AvocadoSize, type) <span class="sc">|&gt;</span> </span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_sales =</span> <span class="fu">mean</span>(sales), <span class="at">.groups =</span> <span class="st">&#39;keep&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `chr_as_locations()`:
+! Can&#39;t subset columns that don&#39;t exist.
+✖ Column `Savocado` doesn&#39;t exist.</code></pre>
+</div>
+</div>
+<p>Visualization:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ca_prop <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> region,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">y =</span> mean_sales,</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">fill =</span> AvocadoSize)) <span class="sc">+</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="at">position =</span> <span class="st">&#39;fill&#39;</span>) <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> type) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Region of CA&quot;</span>,</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Proportion of Mean Avocados Sold&quot;</span>,</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">&quot;Avocado Size&quot;</span>) <span class="sc">+</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_discrete</span>(<span class="at">guide =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge =</span> <span class="dv">2</span>)) <span class="sc">+</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_discrete</span>(<span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Large&quot;</span>, <span class="st">&quot;Extra Large&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in ggplot(ca_prop, mapping = aes(x = region, y = mean_sales, fill = AvocadoSize)): object &#39;ca_prop&#39; not found</code></pre>
+</div>
+</div>
+</section>
 
 </main>
 <!-- /main column -->

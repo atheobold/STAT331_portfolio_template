@@ -15,7 +15,7 @@ execute:
 #| output: false
 library(tidyverse)
 library(ggplot2)
-avocado <- read_csv(here::here("Week 4", "Lab 4", "avocado.csv"))
+avocado <- read_csv(here::here(""))
 ```
 
 ## Avocado Data-set Description

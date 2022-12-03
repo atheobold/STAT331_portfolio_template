@@ -9,29 +9,19 @@ I believe that I deserve a C in the class.
 
 ## Learning Targets:
 
--   **WD-1 Exhibited on Preview Activity 2**
+-   **WD-1 Exhibited in Preview Activity 2**
 
--   **WD-2:** I can select necessary columns from a dataset.
-
-    -   Challenge 3, #1
+-   **WD-2: Exhibited in Challenge 3: #1**
 
 -   **WD-3 Exhibited in Lab 3: #12**
 
--   **WD-4: I can modify existing variables and create new variables in a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).**
+-   **WD-4 Exhibited in Challenge 3: #1, Lab 7 Part One: Task 2 & Task 5, Lab 9: #3**
 
-    -   Challenge 3 #1, Lab 7 Part One Task 2, Task 5, Lab 9 #3
+-   **WD-5 Exhibited in Lab 4: #2**
 
--   **WD-5: I can use mutating joins to combine multiple dataframes.**
+-   **WD-6 Exhibited in Lab 4: #2**
 
-    -   Lab 4, #2
-
--   **WD-6: I can use filtering joins to filter rows from a dataframe.**
-
-    -   Lab 4, #2
-
--   **WD-7: I can pivot dataframes from long to wide and visa versa**
-
-    -   Lab 4, #6, #7
+-   **WD-7 Exhibited in Lab 4: #6 & #7**
 
 <!-- -->
 
@@ -59,9 +49,7 @@ I believe that I deserve a C in the class.
 
     -   Lab 7 Part One: Task 1
 
--   **DVS-5:** I can find summaries of variables across multiple groups.
-
-    -   Challenge 3: #2
+-   **DVS-5 Exhibited in Challenge 3: #2**
 
 -   **DVS-6:** I can create tables which make my summaries clear to the reader.
 

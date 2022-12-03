@@ -1,7 +1,9 @@
 ---
-title: "Challenge3"
+title: "Challenge 3"
 author: "Jake McDonald"
-format: html
+format: 
+  html:
+    self-contained: true
 editor: visual
 ---
 

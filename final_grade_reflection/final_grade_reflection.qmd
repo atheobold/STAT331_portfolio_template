@@ -5,23 +5,9 @@ format: pdf
 editor: visual
 ---
 
-I believe that I deserve a B- in the class.
+I believe that I deserve a C in the class.
 
-edits:
-
-LAB 9
-
--   Include port revisions
-
-LAB 7
-
--   include port revisions
-
-LAB 4
-
--   include final summary revision
-
-## Learning Target (11/23), with possible 4 on the way, 2 off the table
+## Learning Targets:
 
 -   **WD-1:** I can import data from a variety of formats (e.g., csv, xlsx, txt, etc.).
 
@@ -59,15 +45,11 @@ LAB 4
 
 -   **R-2:** I can write well documented and tidy code.
 
-    -   Lab 7, \#
-
--   **R-3:** I can write robust programs that are resistant to changes in inputs.
-
-    -   Lab
+    -   Lab 7 Part 2: Task 1/2
 
 -   **DVS-1:** I can create visualizations for a variety of variable types**.**
 
-    -   Lab 7 - Part 1, Task 2
+    -   Lab 7 Part 1: Task 2
 
 -   **DVS-2:** I use plot modifications to make my visualization clear to the reader.
 
@@ -79,7 +61,7 @@ LAB 4
 
 -   **DVS-4:** I can calculate numerical summaries of variables.
 
-    -   Lab
+    -   Lab 7 Part One: Task 1
 
 -   **DVS-5:** I can find summaries of variables across multiple groups.
 
@@ -91,23 +73,15 @@ LAB 4
 
 -   **DVS-7:** I show creativity in my tables.
 
-    -   lab 9 Section 5: #1
-
--   **PE-1:** I can write concise code which does not repeat itself.
-
-    -   Lab, iteration function
+    -   Lab 9 Section 5: #1
 
 -   **PE-2:** I can write functions to reduce repetition in my code.
 
-    -   Lab, functions
+    -   Lab 9 Part Two: Task 1/2
 
 -   **PE-3:**I can use iteration to reduce repetition in my code
 
-    -   Lab,
-
--   **PE-4: I can use modern tools when carrying out my analysis.**
-
-    -   Lab
+    -   Lab 9 Part Two: Task 1/2
 
 -   **DSM-1:** I can simulate data from a variety of probability models.
 
@@ -117,8 +91,4 @@ LAB 4
 
     -   Lab 9, Section 4: #5, #6
 
-## **Collaborative Group Member**
-
-## **Peer-Code Review**
-
-## 
+## **Reflection:**

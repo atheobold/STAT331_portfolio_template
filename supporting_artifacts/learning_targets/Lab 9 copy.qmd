@@ -1,0 +1,193 @@
+---
+title: "Lab 9"
+author: "Jake McDonald"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+## Lab 9
+
+Library and Data Load In:
+
+```{r}
+#| echo: False
+#| output: False
+library(tidyverse)
+library(broom)
+library(here)
+library(knitr)
+
+a_names <- read_csv(here::here("Week 9", "StateNames_A.csv"))
+```
+
+```{r}
+#| output: false
+a_names <-a_names |> 
+  rename("Sex" = Gender)
+```
+
+## 3 Summarizing & Visualizing the Number of Allisons
+
+#1/2
+
+```{r}
+summary_names <- a_names |> 
+  filter(Name == "Alison",
+         Sex == "F") |> 
+  pivot_wider(names_from = Sex, values_from = Count) |>
+  filter(Name == "Alison") |> 
+  group_by(State) |> 
+  summarize(across(.cols = "F", .fns = sum)) |> 
+  mutate(across(.cols = "F", ~replace_na(., 0))) |> 
+  rename("Number of Females Named Allison" = F)
+
+summary_names
+```
+
+\* Left the across function in the above data wrangling to show how I did it when I included the Male column. I filtered for people assigned Female at birth in the same code chunk.
+
+#3
+
+```{r}
+#| output: false
+vis_names <- a_names |>
+  filter(Name == "Alison") |> 
+  pivot_wider(names_from = Sex, values_from = Count) |> 
+  group_by(Year) |>
+  summarize(sum = sum(F), .groups = "keep")
+```
+
+```{r}
+model_names <- vis_names |> 
+  ggplot(mapping = aes(
+    x = Year,
+    y = sum
+  )) +
+  geom_point()+
+  geom_line()+
+  labs(
+    y = "",
+    x = "Years",
+    title = "Number of People Named Allison Over Time")
+
+model_names
+```
+
+## 4 Modeling the Number of Allisons
+
+#4
+
+```{r}
+lm_names <- vis_names |> 
+  lm(sum ~ Year, data = _)
+
+lm_names
+```
+
+#5
+
+```{r}
+visual_lm <- vis_names |> 
+  ggplot(mapping = aes(
+    x = Year, 
+    y = sum)) +
+  geom_point() +
+  stat_smooth(method = "lm") +
+  labs(x = "Year",
+       y = "",
+       title = "Regression Model Visulization for \n Number of People Named Allison and Year")
+```
+
+```{r}
+visual_lm
+```
+
+#6 Regression Equation:
+
+## Number of Allisons = 59619.99 - 29.07(Year)
+
+#7 Plot the Residuals
+
+```{r}
+resid <- lm_names |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid, x = .fitted)) +
+  geom_point() +
+  labs(
+    x = "Number of Allisons",
+    y = "",
+    title = "Plotted Residuals of LRM \n Using Year to Predict Number of Allison"
+  )
+```
+
+```{r}
+resid
+```
+
+When the number of Allisons are between 1250 and 1400, the Year variable predicts the, to be lower than in actuality. Overall, however, because there a not very much of a pattern, we can reasonably conclude that the data is unbiased, not heteroskedastic, and of equal variance.
+
+#8
+
+Because the beta on the year variable is negative, there is evidence to believe that the popularity of the name Allison is declining over the years.
+
+## 5 Spelling by State
+
+#1 Visualization of the name 'Allan'
+
+```{r}
+#| output: false
+allan <- a_names |> 
+  filter(Name == "Allan" | Name == "Alan" | Name == "Allen") |> 
+  group_by(Year, Name) |> 
+  summarize(total = sum(Count), .groups = "keep") |> 
+  pivot_wider(names_from = Name, values_from = total)
+```
+
+```{r}
+allan_vis <- allan |>
+  ggplot(aes(x = Year)) +
+  geom_line(aes(y = Allen, color = "Allen")) +
+  geom_line(aes(y = Allan, color = "Allan")) +
+  geom_line(aes(y = Alan, color = "Alan")) +
+  scale_color_manual(name='Name Spelling',
+                     breaks=c('Allen', 'Allan', 'Alan'),
+                     values=c('Allen'='pink', 'Allan'='blue', 'Alan'='purple')) +
+  labs(
+    x = "Year",
+    y = "Count",
+    title = "Popularity of Allan Name Spellings Over Time") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+allan_vis
+```
+
+#2
+
+```{r}
+allan_state <- a_names |> 
+  filter(Name == "Allan" | Name == "Alan" | Name == "Allen",
+         Year == 2000,
+         State == "CA" | State == "PA") |> 
+  group_by(State, Name) |> 
+  summarize(total = sum(Count), .groups = "keep") |> 
+  pivot_wider(names_from = Name, values_from = total) |> 
+  mutate(across(.cols = "Alan":"Allen", ~replace_na(., 0)))
+
+allan_state
+```
+
+#3 Converting to Proportions
+
+```{r}
+proportions <- allan_state |> 
+  pivot_longer(cols = "Alan":"Allen", names_to = "Name", values_to = "Count") |> 
+  pivot_wider(names_from = State, values_from = Count) |> 
+  mutate(CA = CA/sum(CA)) |> 
+  mutate(PA = PA/sum(PA)) |> 
+  pivot_longer(cols = "CA":"PA", names_to = "State", values_to = "Proportion") |> 
+  pivot_wider(names_from = Name, values_from = Proportion)
+
+proportions
+```

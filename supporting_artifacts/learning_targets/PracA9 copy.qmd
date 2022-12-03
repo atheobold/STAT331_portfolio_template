@@ -1,0 +1,58 @@
+---
+title: "Practice Activity 9"
+author: "Jake McDonald"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+Library & Data:
+
+```{r}
+#| output: false
+library(tidyverse)
+library(here)
+mystery <- read_csv(here::here("Week 9", "mystery_animal.csv"))
+```
+
+#1
+
+```{r model fit}
+mystery_eval <- mystery |> 
+  lm(weight_after ~ weight_before, data = _)
+```
+
+#2
+
+```{r residual plit}
+mystery_eval |> 
+  broom::augment() |> 
+  ggplot(mapping = aes(y = .resid, x = .fitted)) +
+  geom_point()
+```
+
+#3
+
+```{r simulation function}
+music_man <- function(n_tromb, n_cor, n_reed){
+  
+  trombones <- rnorm(n_tromb, 4.6, 0.8)
+  cornets <- runif(n_cor, 1.5, 3.5)
+  reeds <- rchisq(n_reed, 4)
+  
+  return(sum(trombones, cornets, reeds))
+  
+}
+```
+
+```{r test}
+set.seed(1957)
+
+my_weights <- rerun(.n = 1000, 
+                    music_man(n_tromb = 76, 110, 1035)
+                    ) |> 
+  flatten_dbl()
+
+sum(my_weights < 4532)
+```

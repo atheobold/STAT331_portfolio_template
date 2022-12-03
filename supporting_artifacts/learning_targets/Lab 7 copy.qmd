@@ -1,0 +1,116 @@
+---
+title: "Lab 7"
+author: "Jake McDonald"
+format: html
+editor: visual
+---
+
+Libraries and Data:
+
+```{r}
+#| output: false
+library(tidyverse)
+library(here)
+
+fish <- read_csv(here::here("Week 7", "BlackfootFish.csv"))
+```
+
+## Part One: Summaries and Plot
+
+Task 1:
+
+```{r}
+#| message: false
+fish |> 
+  summarise(across(.cols = everything(), .fns = ~sum(is.na(.))))
+```
+
+There is one variable that have missing values present, the weight variable, and in that variable there is 1796 observations that have missing values.
+
+Task 2:
+
+```{r}
+#| message: false
+fish |> 
+  group_by(trip, year, section) |>  
+  mutate(missing = sum(is.na(weight))) |>
+  ggplot(mapping = aes(x = year, 
+                       y = missing,
+                       fill = section)) + 
+  geom_col() + 
+  facet_wrap(~ trip) +
+  labs(x = "Year", 
+       y = "", 
+       title = "Missing Fish Weights for Trip 1 and Trip 2 (1989-1991)", 
+       subtitle = "By Section of Blackfoot River", 
+       fill = "Section of Blackfoot River")
+```
+
+# Part Two: Adjusting the Data
+
+Task 1/2:
+
+```{r rescale function}
+#function to rescale vectors:
+rescale_01 <- function(vec) {
+  stopifnot(is.numeric(vec),
+            length(vec) > 1)
+  
+  vec_min <- min(vec, na.rm = TRUE)
+  vec_max <- max(vec, na.rm = TRUE)
+  
+  rescale <- (vec - vec_min) / (vec_max - vec_min)
+  return(rescale)
+}
+```
+
+Task 3:
+
+```{r test}
+#| output: false
+x <- c(1:25, NA)
+rescale_01(x)
+```
+
+Task 4:
+
+```{r column test}
+#| output: False
+rescale_01(fish$length)
+#test on a table column
+fish_rescaled <- fish |> 
+  mutate(rescaled_length = rescale_01(length))
+```
+
+```{r}
+#| layout-nrow: 1
+#| message: false
+fish |> 
+  ggplot(mapping = aes(x = length)) +
+    geom_histogram() +
+    labs(x = "Original Length")
+
+fish_rescaled |> 
+  ggplot(mapping = aes(x = rescaled_length)) +
+    geom_histogram() +
+    labs(x = "Rescaled Length")
+```
+
+Task 5:
+
+```{r}
+rescale_column <- function(df, vars){
+  df <- df |> 
+    mutate(across(
+      .cols = {{ vars }},
+      .fns = rescale_01
+    ))
+  return(df)
+}
+```
+
+Task 6:
+
+```{r}
+rescale_column(fish, c(weight,length))
+```

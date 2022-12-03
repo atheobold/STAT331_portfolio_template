@@ -9,17 +9,13 @@ I believe that I deserve a C in the class.
 
 ## Learning Targets:
 
--   **WD-1:** I can import data from a variety of formats (e.g., csv, xlsx, txt, etc.).
-
-    -   practice activity week 2 data import
+-   **WD-1 Exhibited on Preview Activity 2**
 
 -   **WD-2:** I can select necessary columns from a dataset.
 
     -   Challenge 3, #1
 
--   **WD-3:** I can filter rows from a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).
-
-    -   Lab 3, #12
+-   **WD-3 Exhibited in Lab 3: #12**
 
 -   **WD-4: I can modify existing variables and create new variables in a dataframe for a variety of data types (e.g., numeric, integer, character, factor, date).**
 

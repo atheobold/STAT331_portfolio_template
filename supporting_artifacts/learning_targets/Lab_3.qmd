@@ -1,7 +1,9 @@
 ---
 title: "Lab3"
 author: "Jake McDonald"
-format: html
+format: 
+  html:
+    self-contained: true
 editor: visual
 execute: 
   error: true
@@ -13,7 +15,7 @@ library(tidyverse)
 library(ggridges)
 library(here)
 
-hiphop <- read_csv(here::here("Week 3", "Lab3", "hiphop.csv"))
+hiphop <- read_csv(here::here("supporting_artifacts", "learning_targets", "hiphop.csv"))
 ```
 
 ## Hip Hop Data Overview

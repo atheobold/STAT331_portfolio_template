@@ -1,0 +1,54 @@
+---
+title: "Challenge3"
+author: "Jake McDonald"
+format: html
+editor: visual
+---
+
+#1
+
+```{r setup}
+#| output: false
+library(tidyverse)
+library(here)
+hiphop <- read_csv(here::here("supporting_artifacts", "learning_targets", "hiphop.csv"))
+```
+
+#2
+
+```{r data wrangling}
+
+hiphop2 <- hiphop |> 
+  mutate(ethnic_cat = if_else(ethnic == "white", "white", "non-white")) |> 
+  select(c(subj, sex, intl:hiphop, ethnic_cat))
+```
+
+#3
+
+```{r male vs female}
+
+hiphop2 |> 
+  group_by(sex) |> 
+  summarize(across(intl:hiphop, mean, na.rm = TRUE)) |> 
+  summarize(across(intl:hiphop, diff, na.rm = TRUE))
+```
+
+The largest difference in the average number of artists participants reported liking for males versus females was the rock genre.
+
+#4
+
+```{r white vs. non-white}
+
+hiphop2 |> 
+  group_by(ethnic_cat) |> 
+  summarize(across(intl:hiphop, mean, na.rm = TRUE)) |> 
+  summarize(across(intl:hiphop, diff, na.rm = TRUE))
+```
+
+The largest difference in the average number of artists participants reported liking in each genre was for whites vs. non-whites was also the international music genre.
+
+Study Design Critique
+
+1.  The sample is has a much larger proportion of white people than people of color, which would not give an accurate representation of the greater population.
+
+2.  Additionally, I believe that some of the pop-culture/AAE language references could be deemed offensive, as they display generalizations on how African Americans speak

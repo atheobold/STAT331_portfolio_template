@@ -87,16 +87,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </style>
 
 
-<script src="Challenge3_revisions_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Challenge3_revisions_files/libs/quarto-html/quarto.js"></script>
-<script src="Challenge3_revisions_files/libs/quarto-html/popper.min.js"></script>
-<script src="Challenge3_revisions_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Challenge3_revisions_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Challenge3_revisions_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Challenge3_revisions_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Challenge3_revisions_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Challenge3_revisions_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Challenge3_revisions_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="Challenge_3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Challenge_3_files/libs/quarto-html/quarto.js"></script>
+<script src="Challenge_3_files/libs/quarto-html/popper.min.js"></script>
+<script src="Challenge_3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Challenge_3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Challenge_3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Challenge_3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Challenge_3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Challenge_3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Challenge_3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -129,16 +129,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
+<p>#1</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hiphop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"Week 3"</span>, <span class="st">"Lab3"</span>, <span class="st">"hiphop.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>hiphop <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">"supporting_artifacts"</span>, <span class="st">"learning_targets"</span>, <span class="st">"hiphop.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>#2</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>hiphop2 <span class="ot">&lt;-</span> hiphop <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ethnic_cat =</span> <span class="fu">if_else</span>(ethnic <span class="sc">==</span> <span class="st">"white"</span>, <span class="st">"white"</span>, <span class="st">"non-white"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="fu">c</span>(subj, sex, intl<span class="sc">:</span>hiphop, ethnic_cat))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>#3</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>hiphop2 <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">|&gt;</span> </span>
@@ -152,6 +155,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <p>The largest difference in the average number of artists participants reported liking for males versus females was the rock genre.</p>
+<p>#4</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>hiphop2 <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ethnic_cat) <span class="sc">|&gt;</span> </span>

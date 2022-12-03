@@ -1,0 +1,62 @@
+---
+title: "Data Import Practice"
+author: "Jake McDonald"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+```{r}
+#| output: false
+library(tidyverse)
+library(readxl)
+library(here)
+```
+
+## Step 1: Read in the dataset `ages.csv`.
+
+```{r csv}
+#| output: false
+# Code to read in the ages.csv data goes here! 
+read_csv(here::here("supporting_artifacts", "learning_targets", "Ages_Data", "ages.csv"))
+
+```
+
+## Step 2: Read in the dataset `ages_tab.txt`
+
+```{r txt}
+#| output: false
+# Code to read in the ages_tab.txt data goes here! 
+read_delim(here("supporting_artifacts", "learning_targets", "Ages_Data", "ags_tab.txt"), 
+           delim = " ")
+
+```
+
+## Step 3: Read in the dataset `ages_mystery.txt`
+
+```{r}
+# Code to read in the ages_mystery.txt data goes here! 
+
+
+```
+
+## Step 4: Read in the dataset `ages.xlsx`
+
+```{r}
+# Code to read in the ages.xlsx data goes here! 
+
+
+```
+
+## Step 5: Both `read.csv` and `read.table` have an optional argument called `stringsAsFactors`. Figure out what this does.
+
+## Step 6: Find a way to use `read_csv()` to read `ages.csv` with the variable "Name" as a factor and "Age" as a character.
+
+```{r}
+# Code to read in the ages.csv with "Name" as a factor and "Age" as a character goes here! 
+
+
+```
+
+------------------------------------------------------------------------

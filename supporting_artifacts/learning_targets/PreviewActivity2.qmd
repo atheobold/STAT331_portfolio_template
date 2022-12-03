@@ -19,7 +19,7 @@ library(here)
 ```{r csv}
 #| output: false
 # Code to read in the ages.csv data goes here! 
-read_csv(here::here("supporting_artifacts", "learning_targets", "Ages_Data", "ages.csv"))
+read_csv(here("supporting_artifacts", "learning_targets", "Ages_Data", "ages.csv"))
 
 ```
 
@@ -28,16 +28,17 @@ read_csv(here::here("supporting_artifacts", "learning_targets", "Ages_Data", "ag
 ```{r txt}
 #| output: false
 # Code to read in the ages_tab.txt data goes here! 
-read_delim(here("supporting_artifacts", "learning_targets", "Ages_Data", "ags_tab.txt"), 
+read_delim(here("supporting_artifacts", "learning_targets", "Ages_Data", "ages_tab.txt"), 
            delim = " ")
 
 ```
 
 ## Step 3: Read in the dataset `ages_mystery.txt`
 
-```{r}
+```{r ages mystery txt}
 # Code to read in the ages_mystery.txt data goes here! 
-
+read_delim(here("supporting_artifacts", "learning_targets", "Ages_Data", "ages_mystery.txt"), 
+           delim = "|")
 
 ```
 
@@ -45,18 +46,19 @@ read_delim(here("supporting_artifacts", "learning_targets", "Ages_Data", "ags_ta
 
 ```{r}
 # Code to read in the ages.xlsx data goes here! 
-
-
+read_xlsx(here("supporting_artifacts", "learning_targets", "Ages_Data", "ages.xlsx"))
 ```
 
 ## Step 5: Both `read.csv` and `read.table` have an optional argument called `stringsAsFactors`. Figure out what this does.
+
+The `stringsAsFactors` argument converts variables that are strings (or characters) into a `factor` data type. A `factor` data type is different from a character in how it stores the values of the variable.
 
 ## Step 6: Find a way to use `read_csv()` to read `ages.csv` with the variable "Name" as a factor and "Age" as a character.
 
 ```{r}
 # Code to read in the ages.csv with "Name" as a factor and "Age" as a character goes here! 
-
-
+read_csv(here("supporting_artifacts", "learning_targets", "Ages_Data", "ages.csv"), 
+         col_types = list("f", "c"))
 ```
 
 ------------------------------------------------------------------------

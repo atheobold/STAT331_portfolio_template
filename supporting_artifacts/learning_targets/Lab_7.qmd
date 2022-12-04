@@ -1,7 +1,9 @@
 ---
 title: "Lab 7"
 author: "Jake McDonald"
-format: html
+format:
+  html:
+    self-contained: true
 editor: visual
 ---
 
@@ -12,7 +14,7 @@ Libraries and Data:
 library(tidyverse)
 library(here)
 
-fish <- read_csv(here::here("Week 7", "BlackfootFish.csv"))
+fish <- read_csv(here::here("supporting_artifacts", "learning_targets", "BlackfootFish.csv"))
 ```
 
 ## Part One: Summaries and Plot

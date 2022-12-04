@@ -1,0 +1,168 @@
+---
+title: "Lab3"
+author: "Jake McDonald"
+format: 
+  html:
+    self-contained: true
+editor: visual
+execute: 
+  error: true
+---
+
+```{r libraries}
+#| output: false
+library(tidyverse)
+library(here)
+
+hiphop <- read_csv(here::here("supporting_artifacts", "continued_learning", "revisions", "hiphop.csv"))
+```
+
+#1/2
+
+## Hip Hop Data Overview
+
+The study was conducted at This data set has 38 columns and 10752 rows, and each row represents one person's reaction to a specific AAE vocab. This study examines if musical tastes, specifically a preference for hip-hop music, can predict AAE vocabulary more efficiently than ethnicity, social network phenomena, and pop-culture knowledge.
+
+#3
+
+The social network variables, which determines how many people of color the person reacting to the vocabulary, were sometimes replaced with other values. If these values were missing, the researchers insert the values mean in the observation. The benefit of doing this is that it provides a baseline for the observations so that there is not a lot of out-liers in the data. A negative to this is that it could over fit that data and not give representative results.
+
+```{r data clean up}
+
+hiphop_clean <- hiphop |> 
+  mutate(
+    sex = as.factor(sex),
+    ethnic = as.factor(ethnic))
+  
+```
+
+```{r Count of AAE Words}
+
+words <- distinct(hiphop_clean, word)
+count(words)
+```
+
+There are 64 unique AAE Words in this study
+
+```{r ethnic re-categorized}
+
+hiphop_clean <- hiphop_clean |> 
+  mutate(
+    ethnic = 
+      if_else(ethnic == "white", "white", "non-white"))
+```
+
+```{r freeing duplicate}
+
+demographics <- hiphop_clean |>
+  distinct(subj, .keep_all = TRUE)
+```
+
+```{r ethnicity}
+
+ethnicity <- table(demographics['ethnic'])
+print(ethnicity)
+```
+
+Reference: <https://www.marsja.se/r-count-the-number-of-occurrences-in-a-column-using-dplyr/>
+
+There are 135 people who identify as white and 33 people who identify as non-white in this study.
+
+```{r sex}
+
+sex <- table(demographics['sex'])
+print(sex)
+```
+
+There were 117 females and 51 males in this study.
+
+```{r age}
+age <- demographics |> 
+  group_by(age) |> 
+  summarise(n = n()) |> 
+  mutate(Freq = n/sum(n))
+print(age)
+```
+
+reference for above: <https://www.marsja.se/r-count-the-number-of-occurrences-in-a-column-using-dplyr/>
+
+The ages in this group range from 16 to 25, and 18 has the highest frequency. 19 is second highest and next is 20.
+
+```{r ggplots}
+
+library(ggplot2)
+hiphop_clean |> 
+  ggplot(mapping = aes(x = familiarity, y = ethnic, fill = ethnic)) +
+  geom_density_ridges(scale = 0.5) +
+  ggtitle("AAE Familiarity by Ethnicity")
+```
+
+```{r ggplot 2}
+
+library(ggplot2)
+ggplot(data = demographics, 
+       mapping = aes(y = ethnic, fill = ethnic)) +
+  geom_bar() +
+  xlab("Count") +
+  ylab("Ethnicity of Person") +
+  ggtitle("Ethnicity Frequency in Study")
+```
+
+```{r people below the age of 20}
+
+hiphop_clean |> 
+  filter(age < 20) |> 
+  group_by(word) |> 
+  summarize(mean = mean(familiarity)) |> 
+  arrange(mean) |> 
+  #slice_max(mean) |> 
+  slice_min(mean)
+```
+
+On average, for people under 20 that participated in the study, "off the hook" was the most familiar. The least familiar for this group was 'catch the vapors'.
+
+```{r non-white women}
+
+hiphop_clean |> 
+  filter(sex == "Female", ethnic == "non-white") |> 
+  group_by(word) |> 
+  summarize(mean = mean(familiarity)) |> 
+  #slice_max(mean)
+  slice_min(mean)
+
+```
+
+For non-white women, "feel me" was, on average, the most familiar to them. There was four words that all tied for the lowest familiarity, and that included "break someone out", "dukey rope", "plex", and "rollie".
+
+```{r white men above the age of 30}
+
+hiphop_clean |> 
+  filter(sex == "Male", ethnic  == "white", age > 30) |> 
+  group_by(word) |> 
+  summarise(mean = mean(familiarity)) |> 
+  arrange(mean) |> 
+  #slice_max(mean)
+  slice_min(mean)
+```
+
+On average, the most familiar word for white males above above the age of 30 is "5 - 0", and there are 25 words that all have a mean familiarity of only 1.
+
+```{r Finding Justin Bieber}
+
+hiphop_clean |> 
+  distinct(subj, .keep_all = TRUE) |> 
+  filter(sex == "Male",
+         ethnic == "white",
+         age >= 17,
+         age <= 23,
+         city >= 10000,
+         city <= 60000,
+         bieber >= 5) |> 
+  pull(subj)
+```
+
+After wrangling the data, I believe that subject 'p17' is Justin Bieber. We filtered the observations to account for him being white and a male, between the ages of 17 and 23, and can name at least 5 Justin Bieber songs.
+
+Revision Reflection:
+
+For my Lab 3 revision, I did a lot of cleaning to the descriptions and code to allow for efficiency and tidiness of the data. I added the output execution code to the library and data calls so the unnecessary output would not be included in the rendered document. I also added the lab question numbers to make the document more identifiable for grading. Additionally, I added more to my data overview by including where the study was conducted, a deeper description of the sample, and how the dependent variable 'familiarity' was coded. I also changed my use of the table() function to the count() function because it aligns with what we learned in class. I also took out the print functions and unnecessary library load-ins. I also realized that you do not have to use the arrange function if you are slicing the max and min.\

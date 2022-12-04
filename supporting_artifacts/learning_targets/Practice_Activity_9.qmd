@@ -13,7 +13,7 @@ Library & Data:
 #| output: false
 library(tidyverse)
 library(here)
-mystery <- read_csv(here::here("Week 9", "mystery_animal.csv"))
+mystery <- read_csv(here::here("supporting_artifacts", "learning_targets", "mystery_animal.csv"))
 ```
 
 #1

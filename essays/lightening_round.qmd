@@ -1,5 +1,16 @@
 ---
 title: "Lightening Round Essays"
-format: html
+author: "Jake McDonald"
+format: pdf
 editor: visual
 ---
+
+-   If Anagha Rukimini Sikha doesn\'t earn an A, then nobody should, because she always went the extra mile with her work and helped the team out immensely.
+
+-   The most difficult part of the class was data wrangling because it was hard for me to visualize what I needed to do to the data set to get the information that I needed, as well as figuring out the code to perform it.
+
+-   The easiest part of the class was ggplot functions; they are very intuitive.
+
+-   The part of the class that that interested me the most was the regression analysis because of the power that they can provide for statisticians.
+
+-   I would tell them to stay on top of their work and to not get discouraged when they are stuck on a lab; it is a learning curve that is tough but will be rewarded in the end!

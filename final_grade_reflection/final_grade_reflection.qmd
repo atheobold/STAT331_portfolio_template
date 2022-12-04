@@ -23,56 +23,30 @@ I believe that I deserve a C in the class.
 
 -   **WD-7 Exhibited in Lab 4: #6 & #7**
 
-<!-- -->
+-   **R-1 Exhibited in Challenge 9**
 
--   **R-1:** I can create a professional looking, reproducible analysis using RStudio projects, Quarto documents, and the here package.
+-   **R-2 Exhibited in Lab 7 Part 2: Task 1/2**
 
-    -   Lab 9
+-   **DVS-1** **Exhibited in Lab 7 Part 1: Task 2**
 
--   **R-2:** I can write well documented and tidy code.
+-   **DVS-2 Exhibited in Lab 9 Section 5: #1**
 
-    -   Lab 7 Part 2: Task 1/2
+-   **DVS-3 Exhibited in Lab 9 Section 5: #1**
 
--   **DVS-1:** I can create visualizations for a variety of variable types**.**
-
-    -   Lab 7 Part 1: Task 2
-
--   **DVS-2:** I use plot modifications to make my visualization clear to the reader.
-
-    -   Lab 9 - Section 5: #1
-
--   **DVS-3:** I show creativity in my visualizations
-
-    -   Lab 9 - Section 5: #1
-
--   **DVS-4:** I can calculate numerical summaries of variables.
-
-    -   Lab 7 Part One: Task 1
+-   **DVS-4 Exhibited in Lab 7 Part One: Task 1**
 
 -   **DVS-5 Exhibited in Challenge 3: #2**
 
--   **DVS-6:** I can create tables which make my summaries clear to the reader.
+-   **DVS-6 Exhibited in Challenge 9 Section 3: #1/2**
 
-    -   Challenge 9 Section 3: #1/2
+-   **DVS-7 Exhibited in Lab 9 Section 5: #1**
 
--   **DVS-7:** I show creativity in my tables.
+-   **PE-2 Exhibited in Lab 9 Part Two: Task 1/2**
 
-    -   Lab 9 Section 5: #1
+-   **PE-3 Exhibited in Lab 9 Part Two: Task 1/2**
 
--   **PE-2:** I can write functions to reduce repetition in my code.
+-   **DSM-1 Exhibited in Practice Activity 9: #3**
 
-    -   Lab 9 Part Two: Task 1/2
+-   **DSM-2 Exhibited in Lab 9 Section 4: #5 & #6**
 
--   **PE-3:**I can use iteration to reduce repetition in my code
-
-    -   Lab 9 Part Two: Task 1/2
-
--   **DSM-1:** I can simulate data from a variety of probability models.
-
-    -   Practice Activity 9: #3
-
--   **DSM-2:** I can fit a linear regression and extract necessary summary measures.
-
-    -   Lab 9, Section 4: #5, #6
-
-## **Reflection:**
+## **Reflection:** 

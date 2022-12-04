@@ -1,0 +1,113 @@
+---
+title: "Lab 8"
+author: "Jake McDonald"
+format: 
+  html:
+    self-contained: true
+editor: visual
+---
+
+# Lab 8: 12 Days of Christmas
+
+Practice Activity Functions/Set-Up:
+
+```{r packages}
+#| include: false
+library(dplyr)
+library(glue)
+library(stringr)
+library(purrr)
+library(english)
+```
+
+```{r data}
+xmas <- read.csv("https://www.dropbox.com/s/e584pryn8evm1gz/xmas.csv?dl=1")
+```
+
+```{r pluralize-function}
+# Function that takes a noun and makes it plural
+# Arguments -- gift -- A string or vector of strings
+# Return -- A string or vector of strings with the pluralized words
+
+pluralize_gift <- function(gift){
+
+gift <- 
+  case_when(
+    str_detect(gift, "oo") ~ str_replace(gift, "oo", "ee"),
+    str_detect(gift, "y$") ~ str_replace(gift, "y$", "ies"),
+    TRUE ~ str_c(gift, "s", sep = "")
+  )
+return(gift)
+
+}
+```
+
+```{r phrase-function}
+make_phrase <- function(num_word, item, verb, adjective, location, day_word) {
+  
+  ## Step 1: Replace NAs with blank strings
+  verb <- str_replace_na(verb, "")
+  adjective <- str_replace_na(adjective, "")
+  location <- str_replace_na(location, "")
+  
+  
+  ## Step 2: If the day is larger than 1, the items need pluralized! 
+  item <- if_else(num_word != "one", pluralize_gift(item), item)
+  
+  ## Step 3: If the word starts with a vowel, add "an" to the beginning
+  if(num_word == "one")
+    {
+    num_word <- ""
+    if(str_starts(item, "^a^e^i^o^u")){
+      item <- glue("an {item}")
+    }
+    else{
+      item <- glue("a {item}")
+    }
+  }
+  
+  return(glue::glue("{num_word} {adjective} {item} {verb} {location}"))
+}
+```
+
+## Part 1: Singing the Song
+
+```{r}
+sing_line <- function(dataset, line, phrase_col){
+  
+  # Step 1: Setup the intro line
+  num_word <- ordinal(line)
+  
+  intro <- glue::glue("On the {num_word} day of Christmas, my true love gave to me:")
+  
+  # Step 2: Sing the gift phrases
+  
+  phrases <- dataset |>
+    pull( {{phrase_col}} )
+    
+  final <- phrases[line:1]
+  final <- glue_collapse(final, sep = ",\n", last = ",\nand")
+  string_phrase <- glue("\n{phrases}")
+  return(glue::glue("{intro}\n{final}"))
+    
+#  return()
+
+}
+```
+
+```{r}
+xmas2 <- xmas |>
+  mutate(
+    day.num = as.character(english::english(Day)), 
+    Full.Phrase = pmap_chr(.l = list(num_word = day.num, 
+                                     item = Gift.Item, 
+                                     verb = Verb, 
+                                     adjective = Adjective, 
+                                     location = Location), 
+                           .f = make_phrase)
+  )
+
+map_chr(1:12, ~sing_line(xmas2, .x, Full.Phrase)) |>
+  str_c(collapse = "\n") |>
+  cat()
+```

@@ -16,6 +16,8 @@ library(tidyverse)
 library(broom)
 library(here)
 library(knitr)
+library(kableExtra)
+library(DT)
 
 a_names <- read_csv(here::here("supporting_artifacts", "learning_targets", "StateNames_A.csv"))
 ```
@@ -40,7 +42,9 @@ summary_names <- a_names |>
   #get sum by state
   summarize(across(.cols = "F", .fns = sum)) |> 
   mutate(across(.cols = "F", ~replace_na(., 0))) |> 
-  rename("Number of Females Named Allison" = F)
+  rename("Number of Females Named Allison" = F) |> 
+  knitr::kable() |> 
+  kable_styling(latex_options = "striped")
 
 summary_names
 ```
@@ -181,6 +185,13 @@ allan_state <- a_names |>
   #replace na's
   mutate(across(.cols = "Alan":"Allen", ~replace_na(., 0)))
 
+knitr::kable(allan_state,
+             col.names = c("State",
+                           "Count of Spelling 'Alan'",
+                           "Count of Spelling 'Allan'",
+                           "Count of Spelling 'Allen'")) |> 
+  kable_styling(latex_options = "striped")
+
 allan_state
 ```
 
@@ -196,6 +207,13 @@ proportions <- allan_state |>
   mutate(PA = PA/sum(PA)) |> 
   pivot_longer(cols = "CA":"PA", names_to = "State", values_to = "Proportion") |> 
   pivot_wider(names_from = Name, values_from = Proportion)
+
+knitr::kable(proportions,
+             col.names = c("State",
+                           "% Spelled 'Alan'",
+                           "% Spelled 'Allan'",
+                           "% Spelled 'Allen'")) |> 
+  kable_styling(latex_options = "striped")
 
 proportions
 ```

@@ -7,7 +7,9 @@ format:
 editor: visual
 ---
 
+
 ## Lab 9
+
 
 ```{r library & data}
 #| echo: False
@@ -16,6 +18,8 @@ library(tidyverse)
 library(broom)
 library(here)
 library(knitr)
+library(kableExtra)
+library(DT)
 
 a_names <- read_csv(here::here("supporting_artifacts", "learning_targets", "StateNames_A.csv"))
 ```
@@ -27,9 +31,11 @@ a_names <-a_names |>
   rename("Sex" = Gender)
 ```
 
+
 ## 3 Summarizing & Visualizing the Number of Allisons
 
 #1/2
+
 
 ```{r summarizing number of Allisons}
 summary_names <- a_names |> 
@@ -40,14 +46,18 @@ summary_names <- a_names |>
   #get sum by state
   summarize(across(.cols = "F", .fns = sum)) |> 
   mutate(across(.cols = "F", ~replace_na(., 0))) |> 
-  rename("Number of Females Named Allison" = F)
+  rename("Number of Females Named Allison" = F) |> 
+  knitr::kable() |> 
+  kable_styling(latex_options = "striped")
 
 summary_names
 ```
 
+
 \* Left the across function in the above data wrangling to show how I did it when I included the Male column. I filtered for people assigned Female at birth in the same code chunk.
 
 #3
+
 
 ```{r Allison Data Wrangling}
 #| output: false
@@ -75,9 +85,11 @@ model_names <- vis_names |>
 model_names
 ```
 
+
 ## 4 Modeling the Number of Allisons
 
 #4
+
 
 ```{r model fit}
 lm_names <- vis_names |> 
@@ -86,7 +98,9 @@ lm_names <- vis_names |>
 lm_names
 ```
 
+
 #5
+
 
 ```{r regression visualization}
 visual_lm <- vis_names |> 
@@ -103,11 +117,13 @@ visual_lm <- vis_names |>
 visual_lm
 ```
 
+
 #6 Regression Equation:
 
 ## Number of Allisons = 59619.99 - 29.07(Year)
 
 #7 Plot the Residuals
+
 
 ```{r residual plot}
 
@@ -126,6 +142,7 @@ resid <- lm_names |>
 resid
 ```
 
+
 When the number of Allisons are between 1250 and 1400, the Year variable predicts the, to be lower than in actuality. Overall, however, because there a not very much of a pattern, we can reasonably conclude that the data is unbiased, not heteroskedastic, and of equal variance.
 
 #8
@@ -135,6 +152,7 @@ Because the beta on the year variable is negative, there is evidence to believe 
 ## 5 Spelling by State
 
 #1 Visualization of the name 'Allan'
+
 
 ```{r Allan Wrangling}
 #| output: false
@@ -167,7 +185,9 @@ allan_vis <- allan |>
 allan_vis
 ```
 
+
 #2
+
 
 ```{r Allan by State}
 allan_state <- a_names |> 
@@ -181,10 +201,19 @@ allan_state <- a_names |>
   #replace na's
   mutate(across(.cols = "Alan":"Allen", ~replace_na(., 0)))
 
+knitr::kable(allan_state,
+             col.names = c("State",
+                           "Count of Spelling 'Alan'",
+                           "Count of Spelling 'Allan'",
+                           "Count of Spelling 'Allen'")) |> 
+  kable_styling(latex_options = "striped")
+
 allan_state
 ```
 
+
 #3 Converting to Proportions
+
 
 ```{r State Proportions}
 proportions <- allan_state |> 
@@ -197,5 +226,13 @@ proportions <- allan_state |>
   pivot_longer(cols = "CA":"PA", names_to = "State", values_to = "Proportion") |> 
   pivot_wider(names_from = Name, values_from = Proportion)
 
+knitr::kable(proportions,
+             col.names = c("State",
+                           "% Spelled 'Alan'",
+                           "% Spelled 'Allan'",
+                           "% Spelled 'Allen'")) |> 
+  kable_styling(latex_options = "striped")
+
 proportions
 ```
+

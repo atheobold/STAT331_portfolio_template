@@ -10,14 +10,14 @@ Growth As A Data Scientist Essay
 Lightening Round
 
 ## Supporting Artifacts
-Continued Learning 
-  Revisions
+#### Continued Learning 
+##### Revisions
     Lab 2 Revision
     Lab 3 Revision
 
-Extended Learning
+#### Extended Learning
 
-Learning Targets
+#### Learning Targets
     Practice Activity 2
     Lab 3
     Challenge 3

@@ -4,6 +4,7 @@ author: "Jake McDonald"
 format: 
   html:
     self-contained: true
+    theme: minty
 editor: visual
 ---
 
@@ -35,14 +36,14 @@ a_names <-a_names |>
 
 ```{r summarizing number of Allisons}
 summary_names <- a_names |> 
-  filter(Name == "Alison",
-         Sex == "F") |> 
+  filter(Name == "Allison") |> 
   pivot_wider(names_from = Sex, values_from = Count) |>
   group_by(State) |> 
   #get sum by state
-  summarize(across(.cols = "F", .fns = sum)) |> 
-  mutate(across(.cols = "F", ~replace_na(., 0))) |> 
-  rename("Number of Females Named Allison" = F) |> 
+  summarize(across(.cols = c("F", "M"), .fns = sum)) |> 
+  mutate(across(.cols = c("F", "M"), ~replace_na(., 0))) |> 
+  rename("Number of Females Named Allison" = F, 
+         "Number of Males Named Allison" = M) |> 
   knitr::kable() |> 
   kable_styling(latex_options = "striped")
 
@@ -50,6 +51,10 @@ summary_names
 ```
 
 \* Left the across function in the above data wrangling to show how I did it when I included the Male column. I filtered for people assigned Female at birth in the same code chunk.
+
+knitr::kable() \|\>
+
+\# kable_styling(latex_options = "striped")
 
 #3
 

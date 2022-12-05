@@ -3,16 +3,27 @@
 ## Final Grade Reflection
 
 ## Essay Responses
+Efficiency Essay
 
-## Supporting Artifacts 
+Growth As A Data Scientist Essay
 
-### Demonstration of Learning Targets
+Lightening Round
 
-### Demonstration of Continued Learning
+## Supporting Artifacts
+Continued Learning 
+  Revisions
+    Lab 2 Revision
+    Lab 3 Revision
 
-#### Revising My Thinking
+Extended Learning
 
-#### Extending My Thinking
-
-### Growth as a Team Member
-
+Learning Targets
+    Practice Activity 2
+    Lab 3
+    Challenge 3
+    Lab 4
+    Lab 7
+    Lab 8
+    Lab 9
+    Challenge 9
+    Practice Activity 9

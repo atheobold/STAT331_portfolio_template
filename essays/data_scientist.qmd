@@ -1,5 +1,0 @@
----
-title: "My Growth as a Data Scientist"
-format: html
-editor: visual
----

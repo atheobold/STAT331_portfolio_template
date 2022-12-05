@@ -1,0 +1,12 @@
+---
+title: "Growth As A Data Scientist"
+author: "Jake McDonald"
+format: pdf
+editor: visual
+---
+
+I have grown a lot as a data scientist over the course of this class. There are two areas of growth that I would like to focus on: data wrangling and making professional looking Quarto documents. When I was first introduced to R in my Econometrics class, we used scripts instead of Quarto documents and our data sets for our work were already giving in a way where we didn\'t have to worry about data wrangling. This made the introduction of these concepts very new for me, so there was a bit of a learning curve. After the course, however, I feel as though I have gained a much deeper understanding of the material.
+
+In the beginning, I had a hard time with data wrangling. It was difficult for me to visualize what exactly I needed to do to the data set to pull out the desired information and visualize it. As we went along in the class, I feel as though I began to understand what each function does and gained a more intuitive understanding for manipulating data sets. As we introduced the across function and using the Tilda to indicate to perform the function on all the value assigned in the across function, I realized the full potential of R when using the Tidyverse package. I think my growth in data wrangling and manipulation can be seen in Lab 9 and Lab 4. In Lab 9, I exemplified complex data manipulation using the functions from Tidyverse to pull out things like the number of Allison per year, the number of people with different types of spelling of Allan and plotting residuals of the regression equation. I was also able to turn the number of different states into proportions using data wrangling functions. Furthermore, in Lab 4 I pulled out various statistics about the different types of people who recognize AAE terminology.
+
+This was my first experience using Quarto documents, but it\'s addition to my data scientist toolbox will set me apart in the professional world. In the beginning, I had a lot of trouble with formatting the html file as well as ensuring that the document looks professional and organized. I think Challenge 9 exemplifies my ability to make professional and tidy Quarto documents because of how I comment the code, include titles and sections, and use Kibble to make nicer looking tables.

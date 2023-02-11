@@ -1,0 +1,360 @@
+---
+title: "STAT 331 Portfolio"
+author: "Your Name Goes Here"
+format: 
+  html: 
+    self-contained: true
+layout: margin-left
+editor: visual
+---
+
+[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an \_\_.
+
+[**Learning Objective Evidence:**]{.underline} In the code chunks below, provide code from a Lab or Challenge assignment where you believe you have demonstrated proficiency with the specified learning target. Be sure to specify **where** the code came from (e.g., Lab 4 Question 2). 
+
+## Working with Data
+
+**WD-1: I can import data from a _variety_ of formats (e.g., csv, xlsx, txt, etc.).**
+
+- `csv`
+```{r wd-1-csv}
+
+```
+
+- `xlsx`
+```{r wd-1-xlsx}
+
+```
+
+- `txt`
+```{r wd-1-txt}
+
+```
+
+**WD-2: I can select necessary columns from a dataset.**
+
+```{r wd-2}
+
+```
+
+**WD-3: I can filter rows from a dataframe for a _variety_ of data types (e.g., numeric, integer, character, factor, date).**
+
+- numeric
+```{r wd-3-numeric}
+
+```
+
+
+- character -- specifically a string
+```{r wd-3-string}
+
+```
+
+
+- factor
+```{r wd-3-factor}
+
+```
+
+- date
+```{r wd-3-date}
+
+```
+
+**WD-4: I can modify existing variables and create new variables in a dataframe for a _variety_ of data types (e.g., numeric, integer, character, factor, date).**
+
+- numeric
+```{r wd-4-numeric}
+
+```
+
+
+- character -- specifically a string
+```{r wd-4-string}
+
+```
+
+
+- factor
+```{r wd-4-factor}
+
+```
+
+- date
+```{r wd-4-date}
+
+```
+
+**WD-5: I can use mutating joins to combine multiple dataframes.**
+
+- `left_join()`
+```{r wd-5-left}
+
+```
+
+- `right_join()`
+```{r wd-5-right}
+
+```
+
+- `inner_join()`
+```{r wd-5-inner}
+
+```
+
+- `full_join()`
+```{r wd-5-full}
+
+```
+
+**WD-6: I can use filtering joins to filter rows from a dataframe.**
+
+- `semi_join()`
+```{r wd-6-semi}
+
+```
+
+- `anti_join()`
+```{r wd-6-anti}
+
+```
+
+**WD-7: I can pivot dataframes from long to wide and visa versa**
+
+- `pivot_longer()`
+```{r wd-7-long}
+
+```
+
+- `pivot_wider()`
+```{r wd-7-wide}
+
+```
+
+## Reproducibility
+
+**R-1: I can create professional looking, reproducible analyses using RStudio projects, Quarto documents, and the here package.**
+
+I've done this in the following provided assignments:
+
+
+**R-2: I can write well documented and tidy code.**
+
+- Example 1
+```{r r-2-1}
+
+```
+
+- Example 2
+```{r r-2-2}
+
+```
+
+**R-3: I can write robust programs that are resistant to changes in inputs.**
+
+- Example 1
+```{r r-3-1}
+
+```
+
+- Example 2
+```{r r-3-2}
+
+```
+
+## Data Visualization & Summarization
+
+**DVS-1: I can create visualizations for a _variety_ of variable types (e.g., numeric, character, factor, date)**
+
+- numeric variables
+```{r dvs-1-num}
+
+```
+
+
+- numeric variables and categorical variables
+```{r dvs-2-num-cat}
+
+```
+
+
+- categorical variables
+```{r dvs-2-cat}
+
+```
+
+- dates
+```{r dvs-2-date}
+
+```
+
+**DVS-2: I use plot modifications to make my visualization clear to the reader.**
+
+- Example 1
+```{r dvs-2-1}
+
+```
+
+- Example 2
+```{r dvs-2-2}
+
+```
+
+**DVS-3: I show creativity in my visualizations**
+
+- Example 1
+```{r dvs-3-1}
+
+```
+
+- Example 2
+```{r dvs-3-2}
+
+```
+
+**DVS-4: I can calculate numerical summaries of variables.**
+
+- Example 1
+```{r dvs-4-1}
+
+```
+
+- Example 2
+```{r dvs-4-2}
+
+```
+
+**DVS-5: I can find summaries of variables across multiple groups.** 
+
+- Example 1
+```{r dvs-5-1}
+
+```
+
+- Example 2
+```{r dvs-5-2}
+
+```
+
+**DVS-6: I can create tables which make my summaries clear to the reader.**
+
+- Example 1
+```{r dvs-6-1}
+
+```
+
+- Example 2
+```{r dvs-6-2}
+
+```
+
+**DVS-7: I show creativity in my tables.**
+
+- Example 1
+```{r dvs-7-1}
+
+```
+
+- Example 2
+```{r dvs-7-2}
+
+```
+
+## Program Efficiency
+
+**PE-1: I can write concise code which does not repeat itself.**
+
+- using a single function call
+```{r pe-1-one-call}
+
+```
+
+- `across()`
+```{r pe-1-across}
+
+```
+
+- `map()` functions
+```{r pe-1-map-1}
+
+```
+
+**PE-2: I can write functions to reduce repetition in my code.**
+
+- Example 1
+```{r pe2-1}
+
+```
+
+- Example 2
+```{r pe2-2}
+
+```
+
+**PE-3:I can use iteration to reduce repetition in my code.**
+
+- `across()`
+```{r pe-3-across}
+
+```
+
+- `map()` functions (Provide 2 Examples)
+```{r pe-3-map-1}
+
+```
+
+```{r pe-3-map-2}
+
+```
+
+**PE-4: I can use modern tools when carrying out my analysis.**
+
+- Example 1
+```{r pe-4-1}
+
+```
+
+- Example 2
+```{r pe-4-2}
+
+```
+
+## Data Simulation & Modeling
+
+**DSM-1: I can simulate data from a _variety_ of probability models.**
+
+- Example 1
+```{r dsm-1-1}
+
+```
+
+- Example 2
+```{r dsm-1-2}
+
+```
+
+**DSM-2: I can fit a linear regression and extract necessary summary measures.**
+
+- Example 1
+```{r dsm-2-1}
+
+```
+
+- Example 2
+```{r dsm-2-2}
+
+```
+
+
+## Revising My Thinking
+<!-- How did you revise your thinking throughout the course? How did you revise your thinking on the code examples you have provided in your portfolio? -->
+
+
+
+## Extending My Thinking
+<!-- How did you extended your thinking throughout the course? How did you extend your thinking on the code examples you have provided in your portfolio? -->
+
+
+
+## Peer Support & Collaboration
+<!-- Include an image of feedback you gave that you are proud of (either in a peer review or in Discord) -->

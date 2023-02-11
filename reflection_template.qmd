@@ -6,6 +6,9 @@ format:
     self-contained: true
 layout: margin-left
 editor: visual
+execute: 
+  eval: false
+  echo: true
 ---
 
 [**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an \_\_.

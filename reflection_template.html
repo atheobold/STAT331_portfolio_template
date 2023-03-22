@@ -2590,7 +2590,7 @@ vertical-align: -.125em;
 
 </div>
 <ul>
-<li>character – specifically a string</li>
+<li>character – specifically a string (example must use functions from <strong>stringr</strong>)</li>
 </ul>
 <div class="cell">
 
@@ -2602,7 +2602,7 @@ vertical-align: -.125em;
 
 </div>
 <ul>
-<li>date</li>
+<li>date (example must use functions from <strong>lubridate</strong>)</li>
 </ul>
 <div class="cell">
 
@@ -2621,13 +2621,13 @@ vertical-align: -.125em;
 
 </div>
 <ul>
-<li>factor</li>
+<li>factor (example must use functions from <strong>forcats</strong>)</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>date</li>
+<li>date (example must use functions from <strong>lubridate</strong>)</li>
 </ul>
 <div class="cell">
 
@@ -2690,26 +2690,32 @@ vertical-align: -.125em;
 <p>I’ve done this in the following provided assignments:</p>
 <p><strong>R-2: I can write well documented and tidy code.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>Example of <strong>ggplot2</strong> plotting</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>Example of <strong>dplyr</strong> pipeline</li>
+</ul>
+<div class="cell">
+
+</div>
+<ul>
+<li>Example of function formatting</li>
 </ul>
 <div class="cell">
 
 </div>
 <p><strong>R-3: I can write robust programs that are resistant to changes in inputs.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>Example – any context</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>Example of function stops</li>
 </ul>
 <div class="cell">
 
@@ -2719,64 +2725,76 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="data-visualization-summarization">Data Visualization &amp; Summarization</h2>
 <p><strong>DVS-1: I can create visualizations for a <em>variety</em> of variable types (e.g., numeric, character, factor, date)</strong></p>
 <ul>
-<li>numeric variables</li>
+<li>at least two numeric variables</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>numeric variables and categorical variables</li>
+<li>at least one numeric variable and one categorical variable</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>categorical variables</li>
+<li>at least two categorical variables</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>dates</li>
+<li>dates (timeseries plot)</li>
 </ul>
 <div class="cell">
 
 </div>
 <p><strong>DVS-2: I use plot modifications to make my visualization clear to the reader.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>I can ensure people don’t tilt their head</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>I can modify the text in my plot to be more readable</li>
+</ul>
+<div class="cell">
+
+</div>
+<ul>
+<li>I can reorder my legend to align with the colors in my plot</li>
 </ul>
 <div class="cell">
 
 </div>
 <p><strong>DVS-3: I show creativity in my visualizations</strong></p>
 <ul>
-<li>Example 1</li>
+<li>I can use non-standard colors</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>I can use annotations</li>
+</ul>
+<div class="cell">
+
+</div>
+<ul>
+<li>I can …</li>
 </ul>
 <div class="cell">
 
 </div>
 <p><strong>DVS-4: I can calculate numerical summaries of variables.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>Example using <code>summarize()</code></li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>Example using <code>across()</code></li>
 </ul>
 <div class="cell">
 
@@ -2796,26 +2814,26 @@ vertical-align: -.125em;
 </div>
 <p><strong>DVS-6: I can create tables which make my summaries clear to the reader.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>Example with <code>kable()</code></li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>Example with <code>gt()</code></li>
 </ul>
 <div class="cell">
 
 </div>
 <p><strong>DVS-7: I show creativity in my tables.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>Example with <code>kable()</code></li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>Example with <code>gt()</code></li>
 </ul>
 <div class="cell">
 
@@ -2825,7 +2843,7 @@ vertical-align: -.125em;
 <h2 class="anchored" data-anchor-id="program-efficiency">Program Efficiency</h2>
 <p><strong>PE-1: I can write concise code which does not repeat itself.</strong></p>
 <ul>
-<li>using a single function call</li>
+<li>using a single function call with multiple inputs (rather than multiple function calls)</li>
 </ul>
 <div class="cell">
 
@@ -2844,13 +2862,13 @@ vertical-align: -.125em;
 </div>
 <p><strong>PE-2: I can write functions to reduce repetition in my code.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>Function that operates on vectors</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>Function that operates on data frames</li>
 </ul>
 <div class="cell">
 
@@ -2863,23 +2881,26 @@ vertical-align: -.125em;
 
 </div>
 <ul>
-<li><code>map()</code> functions (Provide 2 Examples)</li>
+<li><code>map()</code> function with <strong>one</strong> input (e.g., <code>map()</code>, <code>map_chr()</code>, <code>map_dbl()</code>, etc.)</li>
 </ul>
 <div class="cell">
 
 </div>
+<ul>
+<li><code>map()</code> function with <strong>more than one</strong> input (e.g., <code>map_2()</code> or <code>pmap()</code>)</li>
+</ul>
 <div class="cell">
 
 </div>
 <p><strong>PE-4: I can use modern tools when carrying out my analysis.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>I can use functions which are not superseeded or deprocated</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>I can connect a data wrangling pipeline into a <code>ggplot()</code></li>
 </ul>
 <div class="cell">
 
@@ -2902,13 +2923,13 @@ vertical-align: -.125em;
 </div>
 <p><strong>DSM-2: I can fit a linear regression and extract necessary summary measures.</strong></p>
 <ul>
-<li>Example 1</li>
+<li>I can fit a linear regression</li>
 </ul>
 <div class="cell">
 
 </div>
 <ul>
-<li>Example 2</li>
+<li>I can extract necessary summary measures from a linear regression model</li>
 </ul>
 <div class="cell">
 

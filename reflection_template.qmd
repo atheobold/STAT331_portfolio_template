@@ -48,18 +48,17 @@ execute:
 ```
 
 
-- character -- specifically a string
+- character -- specifically a string (example must use functions from **stringr**)
 ```{r wd-3-string}
 
 ```
-
 
 - factor
 ```{r wd-3-factor}
 
 ```
 
-- date
+- date (example must use functions from **lubridate**)
 ```{r wd-3-date}
 
 ```
@@ -78,12 +77,12 @@ execute:
 ```
 
 
-- factor
+- factor (example must use functions from **forcats**)
 ```{r wd-4-factor}
 
 ```
 
-- date
+- date (example must use functions from **lubridate**)
 ```{r wd-4-date}
 
 ```
@@ -143,24 +142,30 @@ I've done this in the following provided assignments:
 
 **R-2: I can write well documented and tidy code.**
 
-- Example 1
+- Example of **ggplot2** plotting
 ```{r r-2-1}
 
 ```
 
-- Example 2
+- Example of **dplyr** pipeline
 ```{r r-2-2}
 
 ```
 
+- Example of function formatting
+```{r r-2-3}
+
+```
+
+
 **R-3: I can write robust programs that are resistant to changes in inputs.**
 
-- Example 1
+- Example -- any context
 ```{r r-3-1}
 
 ```
 
-- Example 2
+- Example of function stops
 ```{r r-3-2}
 
 ```
@@ -169,60 +174,70 @@ I've done this in the following provided assignments:
 
 **DVS-1: I can create visualizations for a _variety_ of variable types (e.g., numeric, character, factor, date)**
 
-- numeric variables
+- at least two numeric variables
 ```{r dvs-1-num}
 
 ```
 
 
-- numeric variables and categorical variables
+- at least one numeric variable and one categorical variable
 ```{r dvs-2-num-cat}
 
 ```
 
 
-- categorical variables
+- at least two categorical variables
 ```{r dvs-2-cat}
 
 ```
 
-- dates
+- dates (timeseries plot)
 ```{r dvs-2-date}
 
 ```
 
 **DVS-2: I use plot modifications to make my visualization clear to the reader.**
 
-- Example 1
+- I can ensure people don't tilt their head
 ```{r dvs-2-1}
 
 ```
 
-- Example 2
+- I can modify the text in my plot to be more readable
 ```{r dvs-2-2}
+
+```
+
+- I can reorder my legend to align with the colors in my plot
+```{r dvs-2-3}
 
 ```
 
 **DVS-3: I show creativity in my visualizations**
 
-- Example 1
+- I can use non-standard colors
 ```{r dvs-3-1}
 
 ```
 
-- Example 2
+- I can use annotations
 ```{r dvs-3-2}
+
+```
+
+- I can ...
+```{r dvs-3-3}
 
 ```
 
 **DVS-4: I can calculate numerical summaries of variables.**
 
-- Example 1
+- Example using `summarize()`
 ```{r dvs-4-1}
 
 ```
 
-- Example 2
+- Example using `across()`
 ```{r dvs-4-2}
 
 ```
@@ -241,24 +256,24 @@ I've done this in the following provided assignments:
 
 **DVS-6: I can create tables which make my summaries clear to the reader.**
 
-- Example 1
+- Example with `kable()`
 ```{r dvs-6-1}
 
 ```
 
-- Example 2
+- Example with `gt()`
 ```{r dvs-6-2}
 
 ```
 
 **DVS-7: I show creativity in my tables.**
 
-- Example 1
+- Example with `kable()`
 ```{r dvs-7-1}
 
 ```
 
-- Example 2
+- Example with `gt()`
 ```{r dvs-7-2}
 
 ```
@@ -267,7 +282,7 @@ I've done this in the following provided assignments:
 
 **PE-1: I can write concise code which does not repeat itself.**
 
-- using a single function call
+- using a single function call with multiple inputs (rather than multiple function calls)
 ```{r pe-1-one-call}
 
 ```
@@ -284,12 +299,12 @@ I've done this in the following provided assignments:
 
 **PE-2: I can write functions to reduce repetition in my code.**
 
-- Example 1
+- Function that operates on vectors
 ```{r pe2-1}
 
 ```
 
-- Example 2
+- Function that operates on data frames
 ```{r pe2-2}
 
 ```
@@ -301,23 +316,24 @@ I've done this in the following provided assignments:
 
 ```
 
-- `map()` functions (Provide 2 Examples)
+- `map()` function with **one** input (e.g., `map()`, `map_chr()`, `map_dbl()`, etc.)
 ```{r pe-3-map-1}
 
 ```
 
+- `map()` function with **more than one** input (e.g., `map_2()` or `pmap()`)
 ```{r pe-3-map-2}
 
 ```
 
 **PE-4: I can use modern tools when carrying out my analysis.**
 
-- Example 1
+- I can use functions which are not superseeded or deprocated
 ```{r pe-4-1}
 
 ```
 
-- Example 2
+- I can connect a data wrangling pipeline into a `ggplot()`
 ```{r pe-4-2}
 
 ```
@@ -338,12 +354,12 @@ I've done this in the following provided assignments:
 
 **DSM-2: I can fit a linear regression and extract necessary summary measures.**
 
-- Example 1
+- I can fit a linear regression
 ```{r dsm-2-1}
 
 ```
 
-- Example 2
+- I can extract necessary summary measures from a linear regression model
 ```{r dsm-2-2}
 
 ```

@@ -65,7 +65,7 @@ execute:
 
 **WD-4: I can modify existing variables and create new variables in a dataframe for a _variety_ of data types (e.g., numeric, integer, character, factor, date).**
 
-- numeric
+- numeric (using `as.numeric()` is not sufficient)
 ```{r wd-4-numeric}
 
 ```

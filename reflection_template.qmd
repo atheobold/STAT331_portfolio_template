@@ -11,7 +11,7 @@ execute:
   echo: true
 ---
 
-[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an \_\_.
+[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an __.
 
 [**Learning Objective Evidence:**]{.underline} In the code chunks below, provide code from Lab or Challenge assignments where you believe you have demonstrated proficiency with the specified learning target. Be sure to specify **where** the code came from (e.g., Lab 4 Question 2).
 
@@ -21,25 +21,29 @@ execute:
 
 -   `csv`
 
-```{r wd-1-csv}
+```{r}
+#| label: wd-1-csv
 
 ```
 
 -   `xlsx`
 
-```{r wd-1-xlsx}
+```{r}
+#| label: wd-1-xlsx
 
 ```
 
 -   `txt`
 
-```{r wd-1-txt}
+```{r}
+#| label: wd-1-txt
 
 ```
 
 **WD-2: I can select necessary columns from a dataset.**
 
-```{r wd-2}
+```{r}
+#| label: wd-2
 
 ```
 
@@ -47,25 +51,29 @@ execute:
 
 -   numeric
 
-```{r wd-3-numeric}
+```{r}
+#| label: wd-3-numeric
 
 ```
 
 -   character -- specifically a string (example must use functions from **stringr**)
 
-```{r wd-3-string}
+```{r}
+#| label: wd-3-string
 
 ```
 
 -   factor
 
-```{r wd-3-factor}
+```{r}
+#| label: wd-3-factor
 
 ```
 
 -   date (example must use functions from **lubridate**)
 
-```{r wd-3-date}
+```{r}
+#| label: wd-3-date
 
 ```
 
@@ -73,25 +81,29 @@ execute:
 
 -   numeric (using `as.numeric()` is not sufficient)
 
-```{r wd-4-numeric}
+```{r}
+#| label: wd-4-numeric
 
 ```
 
 -   character -- specifically a string (example must use functions from **stringr**)
 
-```{r wd-4-string}
+```{r}
+#| label: wd-4-string
 
 ```
 
 -   factor (example must use functions from **forcats**)
 
-```{r wd-4-factor}
+```{r}
+#| label: wd-4-factor
 
 ```
 
 -   date (example must use functions from **lubridate**)
 
-```{r wd-4-date}
+```{r}
+#| label: wd-4-date
 
 ```
 
@@ -99,25 +111,29 @@ execute:
 
 -   `left_join()`
 
-```{r wd-5-left}
+```{r}
+#| label: wd-5-left
 
 ```
 
 -   `right_join()`
 
-```{r wd-5-right}
+```{r}
+#| label: wd-5-right
 
 ```
 
 -   `inner_join()`
 
-```{r wd-5-inner}
+```{r}
+#| label: wd-5-inner
 
 ```
 
 -   `full_join()`
 
-```{r wd-5-full}
+```{r}
+#| label: wd-5-full
 
 ```
 
@@ -125,13 +141,15 @@ execute:
 
 -   `semi_join()`
 
-```{r wd-6-semi}
+```{r}
+#| label: wd-6-semi
 
 ```
 
 -   `anti_join()`
 
-```{r wd-6-anti}
+```{r}
+#| label: wd-6-anti
 
 ```
 
@@ -139,13 +157,15 @@ execute:
 
 -   `pivot_longer()`
 
-```{r wd-7-long}
+```{r}
+#| label: wd-7-long
 
 ```
 
 -   `pivot_wider()`
 
-```{r wd-7-wide}
+```{r}
+#| label: wd-7-wide
 
 ```
 
@@ -159,19 +179,22 @@ I've done this in the following provided assignments:
 
 -   Example of **ggplot2** plotting
 
-```{r r-2-1}
+```{r}
+#| label: r-2-1
 
 ```
 
 -   Example of **dplyr** pipeline
 
-```{r r-2-2}
+```{r}
+#| label: r-2-2
 
 ```
 
 -   Example of function formatting
 
-```{r r-2-3}
+```{r}
+#| label: r-2-3
 
 ```
 
@@ -179,13 +202,15 @@ I've done this in the following provided assignments:
 
 -   Example -- any context
 
-```{r r-3-1}
+```{r}
+#| label: r-3-example
 
 ```
 
 -   Example of function stops
 
-```{r r-3-2}
+```{r}
+#| label: r-3-function-stops
 
 ```
 
@@ -195,25 +220,29 @@ I've done this in the following provided assignments:
 
 -   at least two numeric variables
 
-```{r dvs-1-num}
+```{r}
+#| label: dvs-1-num
 
 ```
 
 -   at least one numeric variable and one categorical variable
 
-```{r dvs-2-num-cat}
+```{r}
+#| label: dvs-2-num-cat
 
 ```
 
 -   at least two categorical variables
 
-```{r dvs-2-cat}
+```{r}
+#| label: dvs-2-cat
 
 ```
 
 -   dates (timeseries plot)
 
-```{r dvs-2-date}
+```{r}
+#| label: dvs-2-date
 
 ```
 
@@ -221,19 +250,22 @@ I've done this in the following provided assignments:
 
 -   I can ensure people don't tilt their head
 
-```{r dvs-2-1}
+```{r}
+#| label: dvs-2-1
 
 ```
 
 -   I can modify the text in my plot to be more readable
 
-```{r dvs-2-2}
+```{r}
+#| label: dvs-2-2
 
 ```
 
 -   I can reorder my legend to align with the colors in my plot
 
-```{r dvs-2-3}
+```{r}
+#| label: dvs-2-3
 
 ```
 
@@ -241,19 +273,22 @@ I've done this in the following provided assignments:
 
 -   I can use non-standard colors
 
-```{r dvs-3-1}
+```{r}
+#| label: dvs-3-1
 
 ```
 
 -   I can use annotations
 
-```{r dvs-3-2}
+```{r}
+#| label: dvs-3-2
 
 ```
 
--   I can ...
+-   I can be creative...
 
-```{r dvs-3-3}
+```{r}
+#| label: dvs-3-3
 
 ```
 
@@ -261,13 +296,15 @@ I've done this in the following provided assignments:
 
 -   Example using `summarize()`
 
-```{r dvs-4-1}
+```{r}
+#| label: dvs-4-summarize
 
 ```
 
 -   Example using `across()`
 
-```{r dvs-4-2}
+```{r}
+#| label: dvs-4-across
 
 ```
 
@@ -275,13 +312,15 @@ I've done this in the following provided assignments:
 
 -   Example 1
 
-```{r dvs-5-1}
+```{r}
+#| label: dvs-5-1
 
 ```
 
 -   Example 2
 
-```{r dvs-5-2}
+```{r}
+#| label: dvs-5-2
 
 ```
 
@@ -289,13 +328,15 @@ I've done this in the following provided assignments:
 
 -   Example 1
 
-```{r dvs-6-1}
+```{r}
+#| label: dvs-6-1
 
 ```
 
 -   Example 2
 
-```{r dvs-6-2}
+```{r}
+#| label: dvs-6-2
 
 ```
 
@@ -303,13 +344,15 @@ I've done this in the following provided assignments:
 
 -   Example 1
 
-```{r dvs-7-1}
+```{r}
+#| label: dvs-7-1
 
 ```
 
 -   Example 2
 
-```{r dvs-7-2}
+```{r}
+#| label: dvs-7-2
 
 ```
 
@@ -319,19 +362,22 @@ I've done this in the following provided assignments:
 
 -   using a single function call with multiple inputs (rather than multiple function calls)
 
-```{r pe-1-one-call}
+```{r}
+#| label: pe-1-one-call
 
 ```
 
 -   `across()`
 
-```{r pe-1-across}
+```{r}
+#| label: pe-1-across
 
 ```
 
 -   `map()` functions
 
-```{r pe-1-map-1}
+```{r}
+#| label: pe-1-map-1
 
 ```
 
@@ -339,13 +385,15 @@ I've done this in the following provided assignments:
 
 -   Function that operates on vectors
 
-```{r pe2-1}
+```{r}
+#| label: pe-2-1
 
 ```
 
 -   Function that operates on data frames
 
-```{r pe2-2}
+```{r}
+#| label: pe-2-2
 
 ```
 
@@ -353,19 +401,22 @@ I've done this in the following provided assignments:
 
 -   `across()`
 
-```{r pe-3-across}
+```{r}
+#| label: pe-3-across
 
 ```
 
 -   `map()` function with **one** input (e.g., `map()`, `map_chr()`, `map_dbl()`, etc.)
 
-```{r pe-3-map-1}
+```{r}
+#| label: pe-3-map-1
 
 ```
 
 -   `map()` function with **more than one** input (e.g., `map_2()` or `pmap()`)
 
-```{r pe-3-map-2}
+```{r}
+#| label: pe-3-map-2
 
 ```
 
@@ -373,13 +424,15 @@ I've done this in the following provided assignments:
 
 -   I can use functions which are not superseded or deprecated
 
-```{r pe-4-1}
+```{r}
+#| label: pe-4-1
 
 ```
 
 -   I can connect a data wrangling pipeline into a `ggplot()`
 
-```{r pe-4-2}
+```{r}
+#| label: pe-4-2
 
 ```
 
@@ -389,13 +442,15 @@ I've done this in the following provided assignments:
 
 -   Example 1
 
-```{r dsm-1-1}
+```{r}
+#| label: dsm-1-1
 
 ```
 
 -   Example 2
 
-```{r dsm-1-2}
+```{r}
+#| label: dsm-1-2
 
 ```
 
@@ -403,13 +458,15 @@ I've done this in the following provided assignments:
 
 -   Example 1
 
-```{r dsm-2-1}
+```{r}
+#| label: dsm-2-1
 
 ```
 
 -   Example 2
 
-```{r dsm-2-2}
+```{r}
+#| label: dsm-2-2
 
 ```
 

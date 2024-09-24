@@ -3,3 +3,9 @@ title: "My Growth as a Data Scientist"
 format: html
 editor: visual
 ---
+
+***Describe how you have improved as a practitioner and student of data science this quarter through your work in the course.***
+
+-   Focus specifically on data science concepts and the skills we employed in learning them, not a laundry list of topics that you learned (those are in the syllabus, so I know them already).
+
+-   Focus on a small number of specific areas of growth for you that happened in STAT 331. Identify at least one artifact in your portfolio that illustrates each area of growth and explain how this artifact shows growth in the way you are describing.

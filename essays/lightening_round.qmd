@@ -3,3 +3,19 @@ title: "Lightening Round Essays"
 format: html
 editor: visual
 ---
+
+**Answer each of the following questions with *one sentence* including a brief explanation.**
+
+1. Finish the sentence with another student’s name: "If [Name of Student] doesn’t earn an A, then nobody should, because..." Explain your choice and your reasoning.
+
+
+2. What was the most difficult part of the class for you? List a general topic, a specific problem, a kind of work we did, etc. and explain why.
+
+
+3. What was the easiest part of the class for you? Explain why.
+
+
+4. What part of the class surprised or interested you the most? Explain why.
+
+
+5. Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.

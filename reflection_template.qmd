@@ -13,23 +13,26 @@ execute:
 
 [**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an \_\_.
 
-[**Learning Objective Evidence:**]{.underline} In the code chunks below, provide code from a Lab or Challenge assignment where you believe you have demonstrated proficiency with the specified learning target. Be sure to specify **where** the code came from (e.g., Lab 4 Question 2). 
+[**Learning Objective Evidence:**]{.underline} In the code chunks below, provide code from Lab or Challenge assignments where you believe you have demonstrated proficiency with the specified learning target. Be sure to specify **where** the code came from (e.g., Lab 4 Question 2).
 
 ## Working with Data
 
-**WD-1: I can import data from a _variety_ of formats (e.g., csv, xlsx, txt, etc.).**
+**WD-1: I can import data from a *variety* of formats (e.g., csv, xlsx, txt, etc.).**
 
-- `csv`
+-   `csv`
+
 ```{r wd-1-csv}
 
 ```
 
-- `xlsx`
+-   `xlsx`
+
 ```{r wd-1-xlsx}
 
 ```
 
-- `txt`
+-   `txt`
+
 ```{r wd-1-txt}
 
 ```
@@ -40,95 +43,108 @@ execute:
 
 ```
 
-**WD-3: I can filter rows from a dataframe for a _variety_ of data types (e.g., numeric, integer, character, factor, date).**
+**WD-3: I can filter rows from a dataframe for a *variety* of data types (e.g., numeric, integer, character, factor, date).**
 
-- numeric
+-   numeric
+
 ```{r wd-3-numeric}
 
 ```
 
+-   character -- specifically a string (example must use functions from **stringr**)
 
-- character -- specifically a string (example must use functions from **stringr**)
 ```{r wd-3-string}
 
 ```
 
-- factor
+-   factor
+
 ```{r wd-3-factor}
 
 ```
 
-- date (example must use functions from **lubridate**)
+-   date (example must use functions from **lubridate**)
+
 ```{r wd-3-date}
 
 ```
 
-**WD-4: I can modify existing variables and create new variables in a dataframe for a _variety_ of data types (e.g., numeric, integer, character, factor, date).**
+**WD-4: I can modify existing variables and create new variables in a dataframe for a *variety* of data types (e.g., numeric, integer, character, factor, date).**
 
-- numeric (using `as.numeric()` is not sufficient)
+-   numeric (using `as.numeric()` is not sufficient)
+
 ```{r wd-4-numeric}
 
 ```
 
+-   character -- specifically a string (example must use functions from **stringr**)
 
-- character -- specifically a string
 ```{r wd-4-string}
 
 ```
 
+-   factor (example must use functions from **forcats**)
 
-- factor (example must use functions from **forcats**)
 ```{r wd-4-factor}
 
 ```
 
-- date (example must use functions from **lubridate**)
+-   date (example must use functions from **lubridate**)
+
 ```{r wd-4-date}
 
 ```
 
 **WD-5: I can use mutating joins to combine multiple dataframes.**
 
-- `left_join()`
+-   `left_join()`
+
 ```{r wd-5-left}
 
 ```
 
-- `right_join()`
+-   `right_join()`
+
 ```{r wd-5-right}
 
 ```
 
-- `inner_join()`
+-   `inner_join()`
+
 ```{r wd-5-inner}
 
 ```
 
-- `full_join()`
+-   `full_join()`
+
 ```{r wd-5-full}
 
 ```
 
 **WD-6: I can use filtering joins to filter rows from a dataframe.**
 
-- `semi_join()`
+-   `semi_join()`
+
 ```{r wd-6-semi}
 
 ```
 
-- `anti_join()`
+-   `anti_join()`
+
 ```{r wd-6-anti}
 
 ```
 
 **WD-7: I can pivot dataframes from long to wide and visa versa**
 
-- `pivot_longer()`
+-   `pivot_longer()`
+
 ```{r wd-7-long}
 
 ```
 
-- `pivot_wider()`
+-   `pivot_wider()`
+
 ```{r wd-7-wide}
 
 ```
@@ -139,141 +155,160 @@ execute:
 
 I've done this in the following provided assignments:
 
-
 **R-2: I can write well documented and tidy code.**
 
-- Example of **ggplot2** plotting
+-   Example of **ggplot2** plotting
+
 ```{r r-2-1}
 
 ```
 
-- Example of **dplyr** pipeline
+-   Example of **dplyr** pipeline
+
 ```{r r-2-2}
 
 ```
 
-- Example of function formatting
+-   Example of function formatting
+
 ```{r r-2-3}
 
 ```
 
-
 **R-3: I can write robust programs that are resistant to changes in inputs.**
 
-- Example -- any context
+-   Example -- any context
+
 ```{r r-3-1}
 
 ```
 
-- Example of function stops
+-   Example of function stops
+
 ```{r r-3-2}
 
 ```
 
 ## Data Visualization & Summarization
 
-**DVS-1: I can create visualizations for a _variety_ of variable types (e.g., numeric, character, factor, date)**
+**DVS-1: I can create visualizations for a *variety* of variable types (e.g., numeric, character, factor, date)**
 
-- at least two numeric variables
+-   at least two numeric variables
+
 ```{r dvs-1-num}
 
 ```
 
+-   at least one numeric variable and one categorical variable
 
-- at least one numeric variable and one categorical variable
 ```{r dvs-2-num-cat}
 
 ```
 
+-   at least two categorical variables
 
-- at least two categorical variables
 ```{r dvs-2-cat}
 
 ```
 
-- dates (timeseries plot)
+-   dates (timeseries plot)
+
 ```{r dvs-2-date}
 
 ```
 
 **DVS-2: I use plot modifications to make my visualization clear to the reader.**
 
-- I can ensure people don't tilt their head
+-   I can ensure people don't tilt their head
+
 ```{r dvs-2-1}
 
 ```
 
-- I can modify the text in my plot to be more readable
+-   I can modify the text in my plot to be more readable
+
 ```{r dvs-2-2}
 
 ```
 
-- I can reorder my legend to align with the colors in my plot
+-   I can reorder my legend to align with the colors in my plot
+
 ```{r dvs-2-3}
 
 ```
 
 **DVS-3: I show creativity in my visualizations**
 
-- I can use non-standard colors
+-   I can use non-standard colors
+
 ```{r dvs-3-1}
 
 ```
 
-- I can use annotations
+-   I can use annotations
+
 ```{r dvs-3-2}
 
 ```
 
-- I can ...
+-   I can ...
+
 ```{r dvs-3-3}
 
 ```
 
 **DVS-4: I can calculate numerical summaries of variables.**
 
-- Example using `summarize()`
+-   Example using `summarize()`
+
 ```{r dvs-4-1}
 
 ```
 
-- Example using `across()`
+-   Example using `across()`
+
 ```{r dvs-4-2}
 
 ```
 
-**DVS-5: I can find summaries of variables across multiple groups.** 
+**DVS-5: I can find summaries of variables across multiple groups.**
 
-- Example 1
+-   Example 1
+
 ```{r dvs-5-1}
 
 ```
 
-- Example 2
+-   Example 2
+
 ```{r dvs-5-2}
 
 ```
 
 **DVS-6: I can create tables which make my summaries clear to the reader.**
 
-- Example with `kable()`
+-   Example 1
+
 ```{r dvs-6-1}
 
 ```
 
-- Example with `gt()`
+-   Example 2
+
 ```{r dvs-6-2}
 
 ```
 
 **DVS-7: I show creativity in my tables.**
 
-- Example with `kable()`
+-   Example 1
+
 ```{r dvs-7-1}
 
 ```
 
-- Example with `gt()`
+-   Example 2
+
 ```{r dvs-7-2}
 
 ```
@@ -282,98 +317,114 @@ I've done this in the following provided assignments:
 
 **PE-1: I can write concise code which does not repeat itself.**
 
-- using a single function call with multiple inputs (rather than multiple function calls)
+-   using a single function call with multiple inputs (rather than multiple function calls)
+
 ```{r pe-1-one-call}
 
 ```
 
-- `across()`
+-   `across()`
+
 ```{r pe-1-across}
 
 ```
 
-- `map()` functions
+-   `map()` functions
+
 ```{r pe-1-map-1}
 
 ```
 
 **PE-2: I can write functions to reduce repetition in my code.**
 
-- Function that operates on vectors
+-   Function that operates on vectors
+
 ```{r pe2-1}
 
 ```
 
-- Function that operates on data frames
+-   Function that operates on data frames
+
 ```{r pe2-2}
 
 ```
 
 **PE-3:I can use iteration to reduce repetition in my code.**
 
-- `across()`
+-   `across()`
+
 ```{r pe-3-across}
 
 ```
 
-- `map()` function with **one** input (e.g., `map()`, `map_chr()`, `map_dbl()`, etc.)
+-   `map()` function with **one** input (e.g., `map()`, `map_chr()`, `map_dbl()`, etc.)
+
 ```{r pe-3-map-1}
 
 ```
 
-- `map()` function with **more than one** input (e.g., `map_2()` or `pmap()`)
+-   `map()` function with **more than one** input (e.g., `map_2()` or `pmap()`)
+
 ```{r pe-3-map-2}
 
 ```
 
 **PE-4: I can use modern tools when carrying out my analysis.**
 
-- I can use functions which are not superseeded or deprocated
+-   I can use functions which are not superseded or deprecated
+
 ```{r pe-4-1}
 
 ```
 
-- I can connect a data wrangling pipeline into a `ggplot()`
+-   I can connect a data wrangling pipeline into a `ggplot()`
+
 ```{r pe-4-2}
 
 ```
 
-## Data Simulation & Modeling
+## Data Simulation & Statisical Models
 
-**DSM-1: I can simulate data from a _variety_ of probability models.**
+**DSSM-1: I can simulate data from a *variety* of probability models.**
 
-- Example 1
+-   Example 1
+
 ```{r dsm-1-1}
 
 ```
 
-- Example 2
+-   Example 2
+
 ```{r dsm-1-2}
 
 ```
 
-**DSM-2: I can fit a linear regression and extract necessary summary measures.**
+**DSSM-2: I can conduct common statistical analyses in R.**
 
-- I can fit a linear regression
+-   Example 1
+
 ```{r dsm-2-1}
 
 ```
 
-- I can extract necessary summary measures from a linear regression model
+-   Example 2
+
 ```{r dsm-2-2}
 
 ```
 
-
 ## Revising My Thinking
+
 <!-- How did you revise your thinking throughout the course? How did you revise your thinking on the code examples you have provided in your portfolio? -->
 
-
+<!-- For the revisions included in your Portfolio, to help me understand the nature of your revisions, please denote somehow the feedback I provided you (e.g., boldface, italics, colored text) before your revisions. -->
 
 ## Extending My Thinking
+
 <!-- How did you extended your thinking throughout the course? How did you extend your thinking on the code examples you have provided in your portfolio? -->
 
-
-
 ## Peer Support & Collaboration
-<!-- Include an image of feedback you gave that you are proud of (either in a peer review or in Discord) -->
+
+<!-- Include an image or a description of feedback you gave that you are proud of (either in a peer review or in Discord). -->
+
+<!-- Include a description of how you grew as a collaborator through the weekly pair programming activities.   -->

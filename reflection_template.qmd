@@ -1,6 +1,6 @@
 ---
 title: "STAT 331 Portfolio"
-author: "Your Name Goes Here"
+author: "Parker Mascott"
 format: 
   html: 
     self-contained: true
@@ -11,7 +11,7 @@ execute:
   echo: true
 ---
 
-[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an __.
+[**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an B+.
 
 [**Learning Objective Evidence:**]{.underline} In the code chunks below, provide code from Lab or Challenge assignments where you believe you have demonstrated proficiency with the specified learning target. Be sure to specify **where** the code came from (e.g., Lab 4 Question 2).
 
@@ -23,28 +23,63 @@ execute:
 
 ```{r}
 #| label: wd-1-csv
+#| eval: false
+#| warning: false
 
+# From Lab 2 Question 1
+library(readr)
+library(readxl)
+surveys <- read_csv(here("data","surveys.csv"))
 ```
 
 -   `xlsx`
 
 ```{r}
 #| label: wd-1-xlsx
-
+# PA4, Question 3 Knowing how missing values look in the df
+military <- read_xlsx(here::here("data", 
+                                 "gov_spending_per_capita.xlsx"), 
+                      sheet = "Share of Govt. spending", 
+                      skip  = 7, 
+                      n_max = 190,
+                      na = c(". .","xxx")
+                      )
 ```
 
 -   `txt`
 
 ```{r}
 #| label: wd-1-txt
-
+PA
 ```
 
 **WD-2: I can select necessary columns from a dataset.**
 
 ```{r}
 #| label: wd-2
-
+# Lab 3 Question 5
+teachers_clean <- teachers |>
+  mutate(sex = gender,
+         course_id = as.character(course_id),
+         teacher_id = as.character(teacher_id)) |>
+  filter(no_participants >= 10) |>
+  select(course_id, 
+         teacher_id, 
+         question_no, 
+         no_participants, 
+         resp_share, 
+         SET_score_avg, 
+         percent_failed_cur, 
+         academic_degree, 
+         seniority, 
+         sex)
+# Revised to have better formatting, returning to a new line after 
+# each separate input for select() and also changing the name of 
+# the dataset to better describe it. Before, I had it as 
+# teachers_1, which creates a new dataset but doesn't give 
+# any context on what it is besides a copy. teachers_clean gives
+# information that this dataset is better than the last, is refined, 
+# and should be used.
 ```
 
 **WD-3: I can filter rows from a dataframe for a *variety* of data types (e.g., numeric, integer, character, factor, date).**
@@ -53,14 +88,39 @@ execute:
 
 ```{r}
 #| label: wd-3-numeric
-
+# Lab 3 Question 5
+teachers_clean <- teachers |>
+  mutate(sex = gender,
+         course_id = as.character(course_id),
+         teacher_id = as.character(teacher_id)) |>
+  filter(no_participants >= 10) |>
+  select(course_id, 
+         teacher_id, 
+         question_no, 
+         no_participants, 
+         resp_share, 
+         SET_score_avg, 
+         percent_failed_cur, 
+         academic_degree, 
+         seniority, 
+         sex)
+# Revised to have better formatting, returning to a new line after 
+# each separate input for select() and also changing the name of 
+# the dataset to better describe it. Before, I had it as 
+# teachers_1, which creates a new dataset but doesn't give 
+# any context on what it is besides a copy. teachers_clean gives
+# information that this dataset is better than the last, is refined, 
+# and should be used.
 ```
 
 -   character -- specifically a string (example must use functions from **stringr**)
 
 ```{r}
 #| label: wd-3-string
-
+# Lab 5
+get_fit_now_check_in <- get_fit_now_check_in |>
+  filter(str_detect(membership_id, "48Z"),
+         str_detect(check_in_date, "0109"))
 ```
 
 -   factor
@@ -83,6 +143,7 @@ execute:
 
 ```{r}
 #| label: wd-4-numeric
+# Lab 3 Question 5
 
 ```
 
@@ -143,14 +204,20 @@ execute:
 
 ```{r}
 #| label: wd-6-semi
-
+# Lab 5 FINAL JOIN
+GOT_EM <- person |>
+  filter(str_detect(name, "Germuska|Bowers")) |>
+  semi_join(drivers_license, by = c("license_id" = "id"))
 ```
 
 -   `anti_join()`
 
 ```{r}
 #| label: wd-6-anti
-
+# PA 4, Question 4
+military_clean <- military |>
+  anti_join(cont_region,
+            by = join_by(Country == Region))
 ```
 
 **WD-7: I can pivot dataframes from long to wide and visa versa**
@@ -166,14 +233,19 @@ execute:
 
 ```{r}
 #| label: wd-7-wide
-
+# Lab 4 Question 4
+median_income_region <- data_2018 |>
+  filter(study_year == 2008 | study_year == 2018) |>
+    pivot_wider(names_from = study_year, 
+              values_from = median_household_income) |>
+  arrange(desc(`2018`))
 ```
 
 ## Reproducibility
 
 **R-1: I can create professional looking, reproducible analyses using RStudio projects, Quarto documents, and the here package.**
 
-I've done this in the following provided assignments:
+I've done this in the following provided assignments: Lab 2 + Challenge, Lab 3 + Challenge, Lab 4, Lab 5
 
 **R-2: I can write well documented and tidy code.**
 
@@ -181,21 +253,53 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: r-2-1
-
+ggplot(data = teacher_evals_compare,
+        aes(x = sen_level, 
+            fill = SET_level)) +
+  geom_bar(position = "fill") +
+  labs(x = "Seniority of Instructor",
+       y = "",
+       subtitle = "Number of Sections") +
+  scale_fill_manual(values = c("excellent" = "#43719e",
+                               "standard" = "#da7f2d")) +
+  theme_minimal()
 ```
 
 -   Example of **dplyr** pipeline
 
 ```{r}
 #| label: r-2-2
+# Lab 3 Question 5
+teachers_clean <- teachers |>
+  mutate(sex = gender,
+         course_id = as.character(course_id),
+         teacher_id = as.character(teacher_id)) |>
+  filter(no_participants >= 10) |>
+  select(course_id, 
+         teacher_id, 
+         question_no, 
+         no_participants, 
+         resp_share, 
+         SET_score_avg, 
+         percent_failed_cur, 
+         academic_degree, 
+         seniority, 
+         sex)
 
+# Revised to have better formatting, returning to a new line after 
+# each separate input for select() and also changing the name of 
+# the dataset to better describe it. Before, I had it as 
+# teachers_1, which creates a new dataset but doesn't give 
+# any context on what it is besides a copy. teachers_clean gives
+# information that this dataset is better than the last, is refined, 
+# and should be used.
 ```
 
 -   Example of function formatting
 
 ```{r}
 #| label: r-2-3
-
+NA
 ```
 
 **R-3: I can write robust programs that are resistant to changes in inputs.**
@@ -204,14 +308,14 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: r-3-example
-
+NA
 ```
 
 -   Example of function stops
 
 ```{r}
 #| label: r-3-function-stops
-
+NA
 ```
 
 ## Data Visualization & Summarization
@@ -222,6 +326,21 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-1-num
+# Lab 2 Challenge, Question 16
+ggplot(data = surveys,
+       mapping = aes(x = weight,
+                     y = hindfoot_length, labs)) +
+  labs(title = "Weight vs. Length of the Hindfoot across Species",
+       x = "Weight of the animal in grams",
+       y = "",
+       subtitle = "Length of the Hindfoot in mm") +
+  geom_boxplot(outliers = FALSE) +
+  geom_jitter(color = "orange3",
+              alpha = 0.1) +
+  facet_wrap(~species) +
+  theme(axis.text.y = element_text(angle = 45),
+        axis.text.x = element_text(angle = 45)) +
+  coord_flip()
 
 ```
 
@@ -229,21 +348,57 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-2-num-cat
-
+ggplot(data = surveys,
+       mapping = aes(x = weight,
+                     y = hindfoot_length, labs)) +
+  labs(title = "Weight vs. Length of the Hindfoot across Species",
+       x = "Weight of the animal in grams",
+       y = "",
+       subtitle = "Length of the Hindfoot in mm") +
+  geom_boxplot(outliers = FALSE) +
+  geom_jitter(color = "orange3",
+              alpha = 0.1) +
+  facet_wrap(~species) +
+  theme(axis.text.y = element_text(angle = 45),
+        axis.text.x = element_text(angle = 45)) +
+  coord_flip()
 ```
 
 -   at least two categorical variables
 
 ```{r}
 #| label: dvs-2-cat
-
+# Lab 3 Challenge, Queston 2
+ggplot(data = teacher_evals_compare,
+        aes(x = sen_level, 
+            fill = SET_level)) +
+  geom_bar(position = "fill") +
+  labs(x = "Seniority of Instructor",
+       y = "",
+       subtitle = "Number of Sections") +
+  scale_fill_manual(values = c("excellent" = "#43719e",
+                               "standard" = "#da7f2d")) +
+  theme_minimal()
 ```
 
 -   dates (timeseries plot)
 
 ```{r}
 #| label: dvs-2-date
+# Lab 4 Question 6
 
+ggplot(plot_data, aes(x = study_year, y = median_price, color = census_region)) +
+  geom_point() +
+  geom_smooth(method = "loess", se = TRUE) +
+  facet_wrap(~ age_group, ncol = 3) +
+  labs(
+    title = "Weekly Median Price for Center-Based Childcare ($)",
+    x = "Study Year",
+    y = "Weekly Median Price",
+    color = "California Region"
+  ) +
+  theme_bw() +
+  theme(plot.title = element_text(hjust = 0.5))
 ```
 
 **DVS-2: I use plot modifications to make my visualization clear to the reader.**
@@ -252,21 +407,43 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-2-1
-
+# Lab 2 Question 16
+ggplot(data = surveys,
+       mapping = aes(x = species,
+                     y = weight)) +
+  labs(title = "Weight across Species",
+       x = "Species",
+       y = "",
+       subtitle = "Weight in grams") +
+  geom_boxplot(outliers = FALSE) +
+  geom_jitter(color = "orange3",
+              alpha = 0.1) +
+  theme(axis.text.x = element_text(angle = 45))
 ```
 
 -   I can modify the text in my plot to be more readable
 
 ```{r}
 #| label: dvs-2-2
-
+# Lab 2, Queston 16 
+ggplot(data = surveys,
+       mapping = aes(x = species,
+                     y = weight)) +
+  labs(title = "Weight across Species",
+       x = "Species",
+       y = "",
+       subtitle = "Weight in grams") +
+  geom_boxplot(outliers = FALSE) +
+  geom_jitter(color = "orange3",
+              alpha = 0.1) +
+  theme(axis.text.x = element_text(angle = 45))
 ```
 
 -   I can reorder my legend to align with the colors in my plot
 
 ```{r}
 #| label: dvs-2-3
-
+# Lab 4 Question 6
 ```
 
 **DVS-3: I show creativity in my visualizations**
@@ -275,7 +452,17 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-3-1
-
+# Lab 3 Challenge, Question 2
+ggplot(data = teacher_evals_compare,
+        aes(x = sen_level, 
+            fill = SET_level)) +
+  geom_bar(position = "fill") +
+  labs(x = "Seniority of Instructor",
+       y = "",
+       subtitle = "Number of Sections") +
+  scale_fill_manual(values = c("excellent" = "#43719e",
+                               "standard" = "#da7f2d")) +
+  theme_minimal()
 ```
 
 -   I can use annotations
@@ -298,14 +485,30 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-4-summarize
+# Lab 3 Question 8
+demographics <- teachers_clean |>
+  group_by(academic_degree, seniority, sex) |>
+  summarise(unique_teachers = n_distinct(teacher_id)) |>
+  ungroup()
 
+sum(demographics$unique_teachers)
 ```
 
 -   Example using `across()`
 
 ```{r}
 #| label: dvs-4-across
+# 
+teachers_unique <- teachers_clean |> 
+  summarize(across(c(teacher_id, course_id), n_distinct))
 
+# Revised because using across() is more concise and 
+# efficient because it gets rid of the separate count() 
+# operations for each column. Having efficient code is almost as
+# important as having code that works, well not literally, but
+# if you're code is sloppy with a bunch of useless fluff, with
+# a clearly faster and cleaner alternative, many would disregard your
+# skills as a coder.
 ```
 
 **DVS-5: I can find summaries of variables across multiple groups.**
@@ -314,7 +517,11 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-5-1
-
+# Lab 4, Question 4
+data_2018 <- ca_childcare |>
+  group_by(census_region,
+           study_year) |>
+  summarise(median_household_income = median(mhi_2018), .groups = "drop")
 ```
 
 -   Example 2
@@ -330,7 +537,17 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dvs-6-1
+# Lab 3 Question 8
+teachers_unique <- teachers_clean |> 
+  summarize(across(c(teacher_id, course_id), n_distinct))
 
+# Revised because using across() is more concise and 
+# efficient because it gets rid of the separate count() 
+# operations for each column. Having efficient code is almost as
+# important as having code that works, well not literally, but
+# if you're code is sloppy with a bunch of useless fluff, with
+# a clearly faster and cleaner alternative, many would disregard your
+# skills as a coder.
 ```
 
 -   Example 2
@@ -364,21 +581,53 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: pe-1-one-call
+# Lab 3 Question 12
 
+teachers_clean |>
+  filter(academic_degree %in% c("dr", "prof"), sex == "female") |>
+  group_by(teacher_id) |>
+  summarise(avg_resprate = mean(resp_share, na.rm = TRUE),
+    rank = case_when(
+      avg_resprate == max(avg_resprate) ~ "Highest",
+      avg_resprate == min(avg_resprate) ~ "Lowest",
+      TRUE ~ ""
+    )
+  ) |>
+  filter(rank != "") |>
+  print()
+
+# Revised by deleting mutate operation and just 
+# putting what was inside mutate into summarise
+# instead, because summarise() already modifys 
+# the dataset, the mutate function is not needed. 
+# Concise code is very important, if I am unable to 
+# write concise code at this level, how would I be able
+# to write concise code with 100x more complicated problems 
+# in the real world.
 ```
 
 -   `across()`
 
 ```{r}
 #| label: pe-1-across
+# Lab 3 Question 8
+teachers_unique <- teachers_clean |> 
+  summarize(across(c(teacher_id, course_id), n_distinct))
 
+# Revised because using across() is more concise and 
+# efficient because it gets rid of the separate count() 
+# operations for each column. Having efficient code is almost as
+# important as having code that works, well not literally, but
+# if you're code is sloppy with a bunch of useless fluff, with
+# a clearly faster and cleaner alternative, many would disregard your
+# skills as a coder.
 ```
 
 -   `map()` functions
 
 ```{r}
 #| label: pe-1-map-1
-
+NA
 ```
 
 **PE-2: I can write functions to reduce repetition in my code.**
@@ -387,14 +636,56 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: pe-2-1
+# Lab 3 Question 12
+teachers_clean |>
+  filter(academic_degree %in% c("dr", "prof"), sex == "female") |>
+  group_by(teacher_id) |>
+  summarise(avg_resprate = mean(resp_share, na.rm = TRUE),
+    rank = case_when(
+      avg_resprate == max(avg_resprate) ~ "Highest",
+      avg_resprate == min(avg_resprate) ~ "Lowest",
+      TRUE ~ ""
+    )
+  ) |>
+  filter(rank != "") |>
+  print()
 
+# Revised by deleting mutate operation and just 
+# putting what was inside mutate into summarise
+# instead, because summarise() already modifys 
+# the dataset, the mutate function is not needed. 
+# Concise code is very important, if I am unable to 
+# write concise code at this level, how would I be able
+# to write concise code with 100x more complicated problems 
+# in the real world.
 ```
 
 -   Function that operates on data frames
 
 ```{r}
 #| label: pe-2-2
+# Lab 3 Question 12
+teachers_clean |>
+  filter(academic_degree %in% c("dr", "prof"), sex == "female") |>
+  group_by(teacher_id) |>
+  summarise(avg_resprate = mean(resp_share, na.rm = TRUE),
+    rank = case_when(
+      avg_resprate == max(avg_resprate) ~ "Highest",
+      avg_resprate == min(avg_resprate) ~ "Lowest",
+      TRUE ~ ""
+    )
+  ) |>
+  filter(rank != "") |>
+  print()
 
+# Revised by deleting mutate operation and just 
+# putting what was inside mutate into summarise
+# instead, because summarise() already modifys 
+# the dataset, the mutate function is not needed. 
+# Concise code is very important, if I am unable to 
+# write concise code at this level, how would I be able
+# to write concise code with 100x more complicated problems 
+# in the real world.
 ```
 
 **PE-3:I can use iteration to reduce repetition in my code.**
@@ -403,21 +694,21 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: pe-3-across
-
+NA
 ```
 
 -   `map()` function with **one** input (e.g., `map()`, `map_chr()`, `map_dbl()`, etc.)
 
 ```{r}
 #| label: pe-3-map-1
-
+NA
 ```
 
 -   `map()` function with **more than one** input (e.g., `map_2()` or `pmap()`)
 
 ```{r}
 #| label: pe-3-map-2
-
+NA
 ```
 
 **PE-4: I can use modern tools when carrying out my analysis.**
@@ -444,14 +735,14 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dsm-1-1
-
+NA
 ```
 
 -   Example 2
 
 ```{r}
 #| label: dsm-1-2
-
+NA
 ```
 
 **DSSM-2: I can conduct common statistical analyses in R.**
@@ -460,19 +751,24 @@ I've done this in the following provided assignments:
 
 ```{r}
 #| label: dsm-2-1
-
+# Lab 1 Question 10
+t.test(len ~ supp, data = ToothGrowth, var.equal = FALSE, alternative = "two.sided")
 ```
 
 -   Example 2
 
 ```{r}
 #| label: dsm-2-2
-
+# Lab 2 Question 17
+species_aov <- aov(weight~species, data = surveys)
+summary(species_aov)
 ```
 
 ## Revising My Thinking
 
 <!-- How did you revise your thinking throughout the course? How did you revise your thinking on the code examples you have provided in your portfolio? -->
+
+Throughout this course, I have attempted to revise 99% of my assignments, I believe revising is where a lot of the learning happens. For some code examples in the portfolio, I revised because there was a little formatting issue, or it simply did not fit the question. If it did not fit the question, and I can see how I would be able to alter it, get the same result using a more efficient strategy, I went for it. For the actual assignments I tried my best to provide the best explanations/reflections possible for revisions. Really expanding on the why and thinking about the bigger picture was a strength of mine in my assignments.
 
 <!-- For the revisions included in your Portfolio, to help me understand the nature of your revisions, please denote somehow the feedback I provided you (e.g., boldface, italics, colored text) before your revisions. -->
 
@@ -480,8 +776,33 @@ I've done this in the following provided assignments:
 
 <!-- How did you extended your thinking throughout the course? How did you extend your thinking on the code examples you have provided in your portfolio? -->
 
+I extended my thinking throughout this course by building on my previous work and constantly revising. I have also begun to build some projects on my own thanks to these new data skills I have learned. Cleaning, loading, and altering dataset skills have allowed me to start a personal project, getting data from online and cleaning it up to be exactly what I am looking for. For example, in the past I manually inputted soccer statistics for a small dataset, however with my new skills, after web scraping, I can clean the dataset. Filtering only the years and teams I want, pulling out individual statistics for my analyses. All the skills in this course are very useful which I am thankful for!
+
+Specifically in this course, I have extended my thinking on revisions yes, but also on the recent Lab 5 assignment. This lab was completely self run, choosing which R operations to use to deduce the final suspect in a murder case is not something I imagined doing, however it was very fun! I would like to try something like that again in the future but at the end of the course to see how far I have come with my R skills.
+
 ## Peer Support & Collaboration
 
 <!-- Include an image or a description of feedback you gave that you are proud of (either in a peer review or in Discord). -->
 
+Peer review:\
+Yanna this is amazing code. So nice to look at. If I had to say something about the formatting, I would say that personally it would be easier to follow your logic if you had to next to each line instead of in a text block before. If you do not think so, totally fine, it works as is.\
+
+Your use of joins is very good, and your revisions do a great job finding the final suspect, I especially liked your use of the filter function in the final step, brilliant work.\
+
+One final suggestion would be to embed your results, just having the dataset show for long text blocks like these doesn't give much for the reader, it gets cut off and they can't do some deductions themselves, which would have them more invested. You can do this by using 
+```{r}
+`r datasetname[row#, "variable/column name"]`
+# This would go inside your descriptions not in a code chunk, it is an embedding operation.
+```
+I know Dr. T has not mentioned this for their assignments but this is neat and quick way to access full data values.
+
+Lastly, it is useful for stuff that is changing, lets say you had a simulation function that ran everytime you rendered it. You would need to embed a mean type of value because it would change everytime!\
+Discord:
+
+![](images/Screenshot 2024-11-05 at 10.59.38 AM.png){width="404"}
+
 <!-- Include a description of how you grew as a collaborator through the weekly pair programming activities.   -->
+
+Through the weekly pair programming activities I have been able to collaborate extremely well with my partner. Although we have only had two different partners so far, I feel that I have connected with both of them, learned how they succeed and tried to support them as best I can during our activities. The coder and developer style learning has been very effective for me. Although sometimes, we itch to start coding while we are the developer, I enjoy putting my ideas into speech in these classes. Learning these coding skills using different strategies is very effective. Also, when putting ideas into speech, I help my teammates learn as well. If they are confused about a topic, hearing the developer talk their ideas out is useful.\
+\
+With every collaborative assignment, including other classwork as well. I try to be as helpful as possible. Sticking to the developer coder relationship, along with making sure my partner is comfortable and having their ideas be heard is my top priority. In the future, I will try to be more active on discord, posting and answering questions, so people can use my messages are a recourse.
